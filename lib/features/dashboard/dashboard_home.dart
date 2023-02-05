@@ -48,9 +48,11 @@ class _DashboardHomeState extends State<DashboardHome> {
               backgroundColor: AppColors.blue_form,
               pinned: true,
               elevation: kToolbarHeight * 2,
-              leading: SizedBox.shrink(),
+              leading: const SizedBox.shrink(),
               actions: [
-                SvgPicture.asset(AppAssets.settings),
+                GestureDetector(
+                  onTap: ()=>context.pushNamed(AppRoute.profileView.name),
+                    child: SvgPicture.asset(AppAssets.settings)),
                 Padding(
                   padding: const EdgeInsets.only(right: 18.0, left: 8),
                   child: SvgPicture.asset(AppAssets.notifications),
@@ -58,16 +60,16 @@ class _DashboardHomeState extends State<DashboardHome> {
               ],
               centerTitle: true,
               title: Container(
-                margin: EdgeInsets.only(bottom: 20, top: 10),
+                margin: const EdgeInsets.only(bottom: 20, top: 10),
                 height: 30,
                 child: Center(child: SvgPicture.asset(AppAssets.cyberpayLogo)),
               )),
           SliverToBoxAdapter(
               child: Container(
             height: 80,
-            padding: EdgeInsets.only(left: 25, right: 25),
+            padding: const EdgeInsets.only(left: 25, right: 25),
             width: screenSize(context).width,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.grey,
               gradient: LinearGradient(
                 colors: [
@@ -96,7 +98,7 @@ class _DashboardHomeState extends State<DashboardHome> {
                       fillColor: AppColors.white,
                       hintText: 'Search',
                       prefix: Container(
-                        margin: EdgeInsets.only(left: 6, right: 6),
+                        margin: const EdgeInsets.only(left: 6, right: 6),
                         child: SvgPicture.asset(
                           AppAssets.search,
                           color: AppColors.primary,
@@ -113,20 +115,20 @@ class _DashboardHomeState extends State<DashboardHome> {
               ),
             ),
           )),
-          SliverToBoxAdapter(child: gapH12),
+          const SliverToBoxAdapter(child: gapH12),
           SliverToBoxAdapter(
             child: Container(
                 height: screenSize(context).height * 0.180,
                 margin: const EdgeInsets.symmetric(horizontal: 18),
-                padding: EdgeInsets.only(left: 25, right: 25),
+                padding:const EdgeInsets.only(left: 25, right: 25),
                 width: screenSize(context).width - 90,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     image: DecorationImage(
                         fit: BoxFit.cover,
                         image: AssetImage(AppAssets.wallet_bg)),
                     borderRadius: BorderRadius.all(Radius.circular(8))),
                 child: Container(
-                  padding: EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(8),
                   child: Column(
                     children: [
                       Text('Wallet Balance',
@@ -202,18 +204,18 @@ class _DashboardHomeState extends State<DashboardHome> {
                   ),
                 )),
           ),
-          SliverToBoxAdapter(child: gapH8),
+         const SliverToBoxAdapter(child: gapH8),
           SliverToBoxAdapter(
               child: Container(
-            padding: EdgeInsets.symmetric(vertical: 15, horizontal: 18),
-            margin: EdgeInsets.symmetric(horizontal: 18),
+            padding:const  EdgeInsets.symmetric(vertical: 15, horizontal: 18),
+            margin:const  EdgeInsets.symmetric(horizontal: 18),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
                   spreadRadius: 0,
-                  offset: Offset(2, 12),
+                  offset:const  Offset(2, 12),
                   color: Colors.blue.withOpacity(0.3),
                   blurRadius: 20,
                 ),
@@ -225,7 +227,7 @@ class _DashboardHomeState extends State<DashboardHome> {
                 radius: 28.0,
                 lineWidth: 4.0,
                 percent: 0.70,
-                center: Text('70%'),
+                center:const  Text('70%'),
                 progressColor: AppColors.green,
                 animation: true,
               ),
@@ -243,7 +245,7 @@ class _DashboardHomeState extends State<DashboardHome> {
               ),
             ),
           )),
-          SliverToBoxAdapter(child: gapH24),
+          const    SliverToBoxAdapter(child: gapH24),
           SliverToBoxAdapter(
               child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 18),
@@ -261,22 +263,25 @@ class _DashboardHomeState extends State<DashboardHome> {
                   return GestureDetector(
                     onTap: (){
                       if (index==0) {
-                        ///Send
+                        /// Send
                         context.pushNamed(AppRoute.sendMoney.name);
                       } else if (index==1) {
-                        /// recieve
+                        /// Receive
                         context.pushNamed(AppRoute.receiveMoney.name);
                       } else if (index==2) {
-                       ///bills
+                       /// Bills
+                        context.pushNamed(AppRoute.payUtilityBills.name);
                       } else if (index==3) {
-                        /// airtime
+                        /// Airtime
                         context.pushNamed(AppRoute.airtimeAndData.name);
                       } else if (index==4) {
-                        context.pushNamed(AppRoute.virtualCardView.name);
-
+                        /// Data
+                        context.pushNamed(AppRoute.airtimeAndData.name);
                       } else if (index==5) {
-                        /// Gaming
+                        /// Virtual card
+                        context.pushNamed(AppRoute.virtualCardView.name);
                       }
+
                     },
                     child: GridItemContainer(
                       imagePath: dashboardImageList[index],
@@ -317,7 +322,7 @@ class GridItemContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(12),
+      padding:const  EdgeInsets.all(12),
       height: 100,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -326,7 +331,7 @@ class GridItemContainer extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             spreadRadius: 0,
-            offset: Offset(0, 10),
+            offset:const  Offset(0, 10),
             color: Colors.blue.withOpacity(0.05),
             blurRadius: 14,
           ),

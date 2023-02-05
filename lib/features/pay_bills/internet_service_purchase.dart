@@ -1,28 +1,33 @@
-import 'package:flutter/material.dart';
-import 'package:cyberpay_mobile_2/core/configs/styles/app_sizes.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
 import '../../core/configs/styles/app_colors.dart';
+import '../../core/configs/styles/app_sizes.dart';
 import '../../core/widgets/primary_button.dart';
 
-class DataPurchaseDetail extends StatefulWidget {
-  const DataPurchaseDetail({Key? key}) : super(key: key);
+/// InternetServicePurchase
+class InternetServicePurchase extends StatefulWidget {
+  /// InternetServicePurchase
+  const InternetServicePurchase({Key? key}) : super(key: key);
 
   @override
-  State<DataPurchaseDetail> createState() => _DataPurchaseDetailState();
+  State<InternetServicePurchase> createState() => _InternetServicePurchaseState();
 }
 
-class _DataPurchaseDetailState extends State<DataPurchaseDetail> {
-  final dataFormKey = GlobalKey<FormState>();
+class _InternetServicePurchaseState extends State<InternetServicePurchase> {
+
+  final internetPurchaseFormKey =  GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    return       Scaffold(
+    return
+      Scaffold(
         appBar: AppBar(
           elevation: 0,
           centerTitle: true,
           leading: InkWell(
               onTap: () => Navigator.pop(context),
-              child: Icon(
+              child:const Icon(
                 CupertinoIcons.back,
                 color: AppColors.primary,
                 size: 40,
@@ -31,45 +36,44 @@ class _DataPurchaseDetailState extends State<DataPurchaseDetail> {
         body: SafeArea(
             child: CustomScrollView(slivers: [
               SliverAppBar(
-                  toolbarHeight: kToolbarHeight,
                   automaticallyImplyLeading: false,
                   flexibleSpace: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 18.0),
+                    margin: const EdgeInsets.symmetric(horizontal: 18.0),
                     child: Text(
-                      'Prepaid Data Bundle',
+                      'Smile Bundle',
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           color: AppColors.black, fontWeight: FontWeight.bold),
                     ),
                   )),
-              SliverToBoxAdapter(
+              const SliverToBoxAdapter(
                 child: gapH16,
               ),
               SliverToBoxAdapter(
                   child: Container(
                     width: screenSize(context).width,
                     height: screenSize(context).height * 0.65,
-                    padding: EdgeInsets.symmetric(vertical: 15, horizontal: 18),
-                    margin: EdgeInsets.symmetric(horizontal: 18),
+                    padding:const EdgeInsets.symmetric(vertical: 15, horizontal: 18),
+                    margin: const EdgeInsets.symmetric(horizontal: 18),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.white,
                       boxShadow: [
                         BoxShadow(
                           spreadRadius: 0,
-                          offset: Offset(2, 12),
+                          offset: const Offset(2, 12),
                           color: Colors.blue.withOpacity(0.3),
                           blurRadius: 20,
                         ),
                       ],
                     ),
                     child: Form(
-                      key: dataFormKey,
+                      key: internetPurchaseFormKey,
                       child: SingleChildScrollView(
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Plan',
+                                'Packages',
                                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                                   color: AppColors.black,
                                   fontWeight: FontWeight.bold,
@@ -84,30 +88,36 @@ class _DataPurchaseDetailState extends State<DataPurchaseDetail> {
                                     borderRadius: BorderRadius.circular(4),
                                   ),
                                   child: Padding(
-                                      padding: EdgeInsets.only(left: 30, right: 30),
+                                      padding:const EdgeInsets.only(left: 30, right: 30),
                                       child: DropdownButton(
-                                        value: '20GB Monthly Data Plan 5,000',
-                                        items: [
+                                        value: '1GB Flexi 1 Day 300',
+                                        items: const [
                                           DropdownMenuItem(
-                                            value: '20GB Monthly Data Plan 5,000',
-                                            child: Text('20GB Monthly Data Plan 5,000'),
+                                            value: '1GB Flexi 1 Day 300',
+                                            child: Text('1GB Flexi 1 Day 300'),
+                                          ),
+
+                                          DropdownMenuItem(
+                                            value: '2.5GB Flexi 2 Days 500',
+                                            child: Text('2.5GB Flexi 2 Days 500'),
                                           ),
                                           DropdownMenuItem(
-                                              value: '11GB Monthly Data Plan 4,000',
-                                              child: Text('11GB Monthly Data Plan 4,000')),
+                                            value: '1GB Flexi-Weekly 500',
+                                            child: Text('1GB Flexi-Weekly 500'),
+                                          ),
                                           DropdownMenuItem(
-                                            value: '6GB Monthly Data Plan 2,500',
-                                            child: Text('6GB Monthly Data Plan 2,500'),
-                                          ) ,
+                                            value: '2GB Flexi-Weekly 1000',
+                                            child: Text('1GB Flexi-Weekly 500'),
+                                          ),
                                           DropdownMenuItem(
-                                            value: '4.5GB Monthly Data Plan 2,000',
-                                            child: Text('4.5GB Monthly Data Plan 2,000'),
-                                          )
+                                            value: '6GB Flexi-Weekly 6000',
+                                            child: Text('6GB Flexi-Weekly 6000'),
+                                          ),
                                         ],
                                         onChanged: (value) {
                                           print("You have selected $value");
                                         },
-                                        icon: Padding(
+                                        icon: const Padding(
                                             padding: EdgeInsets.only(left: 20),
                                             child: Icon(
                                               CupertinoIcons.chevron_down,
@@ -115,7 +125,7 @@ class _DataPurchaseDetailState extends State<DataPurchaseDetail> {
                                             )),
                                         iconEnabledColor: AppColors.primary,
                                         //Icon color
-                                        style: TextStyle(
+                                        style:const TextStyle(
                                             color: AppColors.primary, fontSize: 12),
 
                                         dropdownColor: Colors.white,
@@ -134,7 +144,7 @@ class _DataPurchaseDetailState extends State<DataPurchaseDetail> {
                               ),
                               gapH8,
                               TextFormField(
-                                decoration: InputDecoration(
+                                decoration:const  InputDecoration(
                                   hintText: '0.00',
                                 ),
                                 keyboardType: TextInputType.number,
@@ -156,7 +166,7 @@ class _DataPurchaseDetailState extends State<DataPurchaseDetail> {
                               ),
                               gapH8,
                               TextFormField(
-                                decoration: InputDecoration(
+                                decoration:const InputDecoration(
                                   hintText: 'Phone number',
                                 ),
                                 keyboardType: TextInputType.number,
@@ -173,7 +183,6 @@ class _DataPurchaseDetailState extends State<DataPurchaseDetail> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   PrimaryButton(
-
                                       buttonColor: AppColors.primary,
                                       text: 'PAY',
                                       onPressed: () {},
@@ -186,6 +195,6 @@ class _DataPurchaseDetailState extends State<DataPurchaseDetail> {
                     ),
                   )),
             ])));
-    ;
+
   }
 }

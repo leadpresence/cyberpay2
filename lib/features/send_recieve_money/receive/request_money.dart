@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/configs/routes/route_paths.dart';
@@ -7,10 +8,13 @@ import '../../../core/configs/styles/app_assests.dart';
 import '../../../core/configs/styles/app_colors.dart';
 import '../../../core/configs/styles/app_sizes.dart';
 import '../../../core/widgets/CustomExpandableCard.dart';
-import '../../../core/widgets/custom_expansion_card.dart';
 import '../../../core/widgets/primary_button.dart';
 
+
+
+/// RequestMoney
 class RequestMoney extends StatefulWidget {
+  /// creates an instance of [RequestMoney]
   const RequestMoney({Key? key}) : super(key: key);
 
   @override
@@ -217,7 +221,12 @@ class _RequestMoneyState extends State<RequestMoney> {
                                                   BorderRadius.circular(6),
                                             ),
                                           ),
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            Clipboard.setData( ClipboardData(text:  'https://cyberpay-wallets-frontend.vercel.app/pay/adaanya7049215647'));
+                                            ScaffoldMessenger.of(context).showSnackBar( SnackBar(
+                                              content: Text('Copied  https://cyberpay-wallets-frontend.vercel.app/pay/adaanya7049215647'),
+                                            ));
+                                          },
                                           child: Padding(
                                             padding: const EdgeInsets.all(8.0),
                                             child: Row(

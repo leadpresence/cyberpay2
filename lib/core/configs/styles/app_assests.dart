@@ -37,6 +37,7 @@ class AppAssets {
   static const share = "images/share.svg";
   static const share_ic = "images/share_ic.svg";
   static const link_ic = "images/link_ic.svg";
+  static const avatar = "images/avatar.svg";
 
 
 
@@ -52,6 +53,18 @@ class AppAssets {
   static const mtn = "images/mtn.png";
   static const glo = "images/glo.png";
   static const nine_mobile = "images/nine_mobile.png";
+  static const jos = "images/jos.png";
+  static const eko = "images/eko.png";
+  static const ibadan = "images/ib.png";
+  static const ikeja = "images/ikeja.png";
+  static const enugu = "images/enugu.png";
+  static const dstv = "images/dstv.png";
+  static const gotv = "images/gotv.png";
+  static const startimes = "images/startims.png";
+  static const iroktv = "images/iroko.png";
+  static const cyberSpace = "images/cyberspace.png";
+  static const smile = "images/smile.png";
+  static const lcc = "images/lekki.png";
 
 
 }

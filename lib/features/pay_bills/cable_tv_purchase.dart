@@ -4,15 +4,19 @@ import 'package:flutter/cupertino.dart';
 import '../../core/configs/styles/app_colors.dart';
 import '../../core/widgets/primary_button.dart';
 
-class DataPurchaseDetail extends StatefulWidget {
-  const DataPurchaseDetail({Key? key}) : super(key: key);
+
+/// CableTvPurchase
+class CableTvPurchase extends StatefulWidget {
+  /// Instance of [ CableTvPurchase ]
+  const CableTvPurchase({Key? key}) : super(key: key);
 
   @override
-  State<DataPurchaseDetail> createState() => _DataPurchaseDetailState();
+  State<CableTvPurchase> createState() => _CableTvPurchaseState();
 }
 
-class _DataPurchaseDetailState extends State<DataPurchaseDetail> {
+class _CableTvPurchaseState extends State<CableTvPurchase> {
   final dataFormKey = GlobalKey<FormState>();
+  String selectedPlan ='20GB Monthly Data Plan 5,000';
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +40,7 @@ class _DataPurchaseDetailState extends State<DataPurchaseDetail> {
                   flexibleSpace: Container(
                     margin: EdgeInsets.symmetric(horizontal: 18.0),
                     child: Text(
-                      'Prepaid Data Bundle',
+                      'TV Subscription',
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           color: AppColors.black, fontWeight: FontWeight.bold),
                     ),
@@ -86,26 +90,32 @@ class _DataPurchaseDetailState extends State<DataPurchaseDetail> {
                                   child: Padding(
                                       padding: EdgeInsets.only(left: 30, right: 30),
                                       child: DropdownButton(
-                                        value: '20GB Monthly Data Plan 5,000',
+                                        value: 'GOTV LITE (ANNUAL)'  ,
                                         items: [
                                           DropdownMenuItem(
-                                            value: '20GB Monthly Data Plan 5,000',
-                                            child: Text('20GB Monthly Data Plan 5,000'),
+                                            value: 'GOTV LITE (ANNUAL)',
+                                            child: Text('GOTV LITE (ANNUAL)'),
                                           ),
                                           DropdownMenuItem(
-                                              value: '11GB Monthly Data Plan 4,000',
-                                              child: Text('11GB Monthly Data Plan 4,000')),
+                                              value: 'GOTV SUPA',
+                                              child: Text('GOTV SUPA')),
                                           DropdownMenuItem(
-                                            value: '6GB Monthly Data Plan 2,500',
-                                            child: Text('6GB Monthly Data Plan 2,500'),
+                                            value: 'GOTV JOLLI 2,800',
+                                            child: Text('GOTV JOLLI 2,800'),
                                           ) ,
                                           DropdownMenuItem(
-                                            value: '4.5GB Monthly Data Plan 2,000',
-                                            child: Text('4.5GB Monthly Data Plan 2,000'),
-                                          )
+                                            value: 'GOTV JINJA 1,900',
+                                            child: Text('GOTV JINJA 1,900'),
+                                          ),
+                                          DropdownMenuItem(
+                                            value: 'GOTV MAX 4,150',
+                                            child: Text('GOTV MAX 4,150'),
+                                          ),
                                         ],
                                         onChanged: (value) {
-                                          print("You have selected $value");
+                                          setState(() {
+                                            selectedPlan = value!;
+                                          });
                                         },
                                         icon: Padding(
                                             padding: EdgeInsets.only(left: 20),
@@ -115,9 +125,7 @@ class _DataPurchaseDetailState extends State<DataPurchaseDetail> {
                                             )),
                                         iconEnabledColor: AppColors.primary,
                                         //Icon color
-                                        style: TextStyle(
-                                            color: AppColors.primary, fontSize: 12),
-
+                                        style: TextStyle( color: AppColors.primary, fontSize: 12 ),
                                         dropdownColor: Colors.white,
                                         //dropdown background color
                                         underline: Container(),
@@ -159,12 +167,12 @@ class _DataPurchaseDetailState extends State<DataPurchaseDetail> {
                                 decoration: InputDecoration(
                                   hintText: 'Phone number',
                                 ),
+
                                 keyboardType: TextInputType.number,
                                 onChanged: (String? value) {
                                   setState(() {});
                                 },
                                 cursorColor: Colors.black12,
-                                // keyboardType: TextInputType.name,
                                 autovalidateMode: AutovalidateMode.onUserInteraction,
                                 validator: (_) {},
                               ),

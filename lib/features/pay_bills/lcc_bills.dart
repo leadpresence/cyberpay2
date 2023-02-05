@@ -1,22 +1,24 @@
-import 'package:flutter/material.dart';
-import 'package:cyberpay_mobile_2/core/configs/styles/app_sizes.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import '../../core/configs/styles/app_colors.dart';
+import '../../core/configs/styles/app_sizes.dart';
 import '../../core/widgets/primary_button.dart';
 
-class DataPurchaseDetail extends StatefulWidget {
-  const DataPurchaseDetail({Key? key}) : super(key: key);
+
+class LekkiConsessionPayment extends StatefulWidget {
+  const LekkiConsessionPayment({Key? key}) : super(key: key);
 
   @override
-  State<DataPurchaseDetail> createState() => _DataPurchaseDetailState();
+  State<LekkiConsessionPayment> createState() => _LekkiConsessionPaymentState();
 }
 
-class _DataPurchaseDetailState extends State<DataPurchaseDetail> {
-  final dataFormKey = GlobalKey<FormState>();
-
+class _LekkiConsessionPaymentState extends State<LekkiConsessionPayment> {
+   final lccFormKey =  GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    return       Scaffold(
+
+    return
+      Scaffold(
         appBar: AppBar(
           elevation: 0,
           centerTitle: true,
@@ -36,7 +38,7 @@ class _DataPurchaseDetailState extends State<DataPurchaseDetail> {
                   flexibleSpace: Container(
                     margin: EdgeInsets.symmetric(horizontal: 18.0),
                     child: Text(
-                      'Prepaid Data Bundle',
+                      'Lekki Concession Company',
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           color: AppColors.black, fontWeight: FontWeight.bold),
                     ),
@@ -63,13 +65,13 @@ class _DataPurchaseDetailState extends State<DataPurchaseDetail> {
                       ],
                     ),
                     child: Form(
-                      key: dataFormKey,
+                      key: lccFormKey,
                       child: SingleChildScrollView(
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Plan',
+                                'Packages',
                                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                                   color: AppColors.black,
                                   fontWeight: FontWeight.bold,
@@ -86,23 +88,13 @@ class _DataPurchaseDetailState extends State<DataPurchaseDetail> {
                                   child: Padding(
                                       padding: EdgeInsets.only(left: 30, right: 30),
                                       child: DropdownButton(
-                                        value: '20GB Monthly Data Plan 5,000',
+                                        value: 'LCC',
                                         items: [
                                           DropdownMenuItem(
-                                            value: '20GB Monthly Data Plan 5,000',
-                                            child: Text('20GB Monthly Data Plan 5,000'),
+                                            value: 'LCC',
+                                            child: Text('LCC'),
                                           ),
-                                          DropdownMenuItem(
-                                              value: '11GB Monthly Data Plan 4,000',
-                                              child: Text('11GB Monthly Data Plan 4,000')),
-                                          DropdownMenuItem(
-                                            value: '6GB Monthly Data Plan 2,500',
-                                            child: Text('6GB Monthly Data Plan 2,500'),
-                                          ) ,
-                                          DropdownMenuItem(
-                                            value: '4.5GB Monthly Data Plan 2,000',
-                                            child: Text('4.5GB Monthly Data Plan 2,000'),
-                                          )
+
                                         ],
                                         onChanged: (value) {
                                           print("You have selected $value");
@@ -173,7 +165,6 @@ class _DataPurchaseDetailState extends State<DataPurchaseDetail> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   PrimaryButton(
-
                                       buttonColor: AppColors.primary,
                                       text: 'PAY',
                                       onPressed: () {},
@@ -186,6 +177,5 @@ class _DataPurchaseDetailState extends State<DataPurchaseDetail> {
                     ),
                   )),
             ])));
-    ;
   }
 }

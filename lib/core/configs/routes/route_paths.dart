@@ -2,18 +2,25 @@ import 'package:cyberpay_mobile_2/features/airtime_data/data_purchase_datails.da
 import 'package:cyberpay_mobile_2/features/dashboard/bvn_submission.dart';
 import 'package:cyberpay_mobile_2/features/dashboard/dashboard_home.dart';
 import 'package:cyberpay_mobile_2/features/login/login_view.dart';
+import 'package:cyberpay_mobile_2/features/pay_bills/pay_utility_bills.dart';
 import 'package:cyberpay_mobile_2/features/send_recieve_money/receive/request_money.dart';
 import 'package:cyberpay_mobile_2/features/send_recieve_money/send/send_money.dart';
 import 'package:cyberpay_mobile_2/features/sign_up/account_creation_view.dart';
 import 'package:cyberpay_mobile_2/features/virtual_card/virtual_card_view.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../../features/add_bank_and_card/add_main_view.dart';
 import '../../../features/airtime_data/airtime_and_data.dart';
 import '../../../features/airtime_data/airtime_purchase_details.dart';
+import '../../../features/dashboard/dashboard_profile.dart';
 import '../../../features/dashboard/face_verification.dart';
 import '../../../features/onboarding/CyberpayOnBoarding.dart';
 import '../../../features/onboarding/welcome_splash.dart';
-import '../../../features/add_bank_and_card/add_main_view.dart';
+import '../../../features/pay_bills/cable_tv_purchase.dart';
+import '../../../features/pay_bills/electricity_bills_purchase.dart';
+import '../../../features/pay_bills/internet_service_purchase.dart';
+import '../../../features/pay_bills/lcc_bills.dart';
 import '../../../features/saved/saved_card_and_bank.dart';
 
 /// Enum for app routes
@@ -23,19 +30,23 @@ enum AppRoute {
 
   /// LoginView
   loginView,
- /// LoginPinView,
+
+  /// LoginPinView,
   loginPinView,
 
   /// PinSetupView,
   linSetupView,
- ///  dashboardHome
-   dashboardHome,
+
+  ///  dashboardHome
+  dashboardHome,
 
   /// RegisterView,
   registerView,
 
   /// HomeView,
   homeView,
+  /// profileView
+  profileView,
 
   /// BillsCategoryView,
   billsCategoryView,
@@ -57,25 +68,48 @@ enum AppRoute {
 
   /// Face verification 1
   faceVerificationView,
+
   ///bvnSubmissionView
   bvnSubmissionView,
+
   /// virtualCardView
-   virtualCardView,
+  virtualCardView,
+
   ///Add card and bank main view
   addingBankCardMainView,
-  ///Saved card and bank main view
 
+  ///Saved card and bank main view
   savedBankCardMainView,
+
   ///sendMoney
   sendMoney,
+
   ///recieveMoney
   receiveMoney,
- /// airtimeAndData
+
+  /// airtimeAndData
   airtimeAndData,
- /// airtimePurchaseDetails
+
+  /// airtimePurchaseDetails
   airtimePurchaseDetails,
+
   /// dataPurchaseDetails
-  dataPurchaseDetails
+  dataPurchaseDetails,
+
+  /// payUtilityBills
+  payUtilityBills,
+
+  /// electricityBillsPayment,
+  electricityBillsPayment,
+
+  ///cableBillsPayment,
+  cableBillsPayment,
+
+  /// internetServicesBillsPayment,
+  internetServicesBillsPayment,
+
+  /// lccServicesBillsPayment,
+  lccServicesBillsPayment,
 }
 
 /// gorouter provider
@@ -98,7 +132,6 @@ final goRouterProvider = Provider<GoRouter>((ref) {
           name: AppRoute.introView.name,
           builder: (context, state) => const CyberpayOnBoarding(),
         ),
-
         GoRoute(
           path: 'registerView',
           name: AppRoute.registerView.name,
@@ -129,7 +162,6 @@ final goRouterProvider = Provider<GoRouter>((ref) {
           name: AppRoute.addingBankCardMainView.name,
           builder: (context, state) => const AddingBankCardMainView(),
         ),
-
         GoRoute(
           path: 'savedBankCardMainView',
           name: AppRoute.savedBankCardMainView.name,
@@ -159,6 +191,38 @@ final goRouterProvider = Provider<GoRouter>((ref) {
           path: 'dataPurchaseDetails',
           name: AppRoute.dataPurchaseDetails.name,
           builder: (context, state) => const DataPurchaseDetail(),
+        ),
+        GoRoute(
+          path: 'payUtilityBills',
+          name: AppRoute.payUtilityBills.name,
+          builder: (context, state) => const PayUtilityBills(),
+        ),
+
+        GoRoute(
+          path: 'lccServicesBillsPayment',
+          name: AppRoute.lccServicesBillsPayment.name,
+          builder: (context, state) => const LekkiConsessionPayment(),
+        ),
+
+        GoRoute(
+          path: 'internetServicesBillsPayment',
+          name: AppRoute.internetServicesBillsPayment.name,
+          builder: (context, state) => const InternetServicePurchase(),
+        ),
+        GoRoute(
+          path: 'cableBillsPayment',
+          name: AppRoute.cableBillsPayment.name,
+          builder: (context, state) => const CableTvPurchase(),
+        ),
+        GoRoute(
+          path: 'electricityBillsPayment',
+          name: AppRoute.electricityBillsPayment.name,
+          builder: (context, state) => const ElectricityBillsPurchase(),
+        ),
+        GoRoute(
+          path: 'profileView',
+          name: AppRoute.profileView.name,
+          builder: (context, state) => const Profile(),
         ),
       ],
     ),
