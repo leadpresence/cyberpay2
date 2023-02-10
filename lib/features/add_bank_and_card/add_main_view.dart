@@ -2,8 +2,8 @@ import 'package:cyberpay_mobile_2/features/add_bank_and_card/add_new_card_view.d
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../../core/configs/styles/app_colors.dart';
-import '../../core/configs/styles/app_sizes.dart';
+import '../../common/configs/styles/app_colors.dart';
+import '../../common/configs/styles/app_sizes.dart';
 import 'add_new_bank_view.dart';
 
 /// AddingBankCardMainView
@@ -30,7 +30,7 @@ class _AddingBankCardMainViewState extends State<AddingBankCardMainView> {
               centerTitle: true,
               leading: GestureDetector(
                   onTap: () => context.pop,
-                  child: Icon(
+                  child:const Icon(
                     CupertinoIcons.back,
                     color: AppColors.primary,
                     size: 40,
@@ -48,6 +48,7 @@ class _AddingBankCardMainViewState extends State<AddingBankCardMainView> {
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 24.0),
                   child: CustomScrollView(
+                    physics:const BouncingScrollPhysics(),
                     slivers: [
                       SliverAppBar(
                         toolbarHeight: 140,
@@ -75,11 +76,11 @@ class _AddingBankCardMainViewState extends State<AddingBankCardMainView> {
                               ),
                               child: TabBar(
                                 // controller: _tabController,
-                                labelStyle: TextStyle(
+                                labelStyle:const TextStyle(
                                     color: AppColors.white,
                                     fontSize: 12.0,
                                     fontWeight: FontWeight.bold),
-                                unselectedLabelStyle: TextStyle(
+                                unselectedLabelStyle:const TextStyle(
                                     fontSize: 12.0,
                                     color: AppColors.white,
                                     fontWeight: FontWeight.bold),
@@ -96,7 +97,7 @@ class _AddingBankCardMainViewState extends State<AddingBankCardMainView> {
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(4),
                                       ),
-                                      child: Align(child: Text('Bank')),
+                                      child: const Align(child: Text('Bank')),
                                     ),
                                   ),
                                   Tab(
@@ -104,7 +105,7 @@ class _AddingBankCardMainViewState extends State<AddingBankCardMainView> {
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(4),
                                       ),
-                                      child: Align(child: Text('Cards')),
+                                      child:const Align(child: Text('Cards')),
                                     ),
                                   ),
                                 ],
@@ -114,9 +115,9 @@ class _AddingBankCardMainViewState extends State<AddingBankCardMainView> {
                         ),
                       ),
 
-                      SliverFillRemaining(
+                      const   SliverFillRemaining(
                         child: TabBarView(
-                          physics: const NeverScrollableScrollPhysics(),
+                          physics:   NeverScrollableScrollPhysics(),
                           children: [
                             AddNewBank(),
                             AddNewCard(),

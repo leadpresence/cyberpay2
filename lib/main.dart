@@ -3,11 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-
-import 'core/sevices/storage/hive_storage_service.dart';
-import 'core/sevices/storage/storage_service.dart';
-import 'core/sevices/storage/storage_service_provider.dart';
 import 'cyberpay_mobile.dart';
+import 'data/local/storage_service.dart';
+import 'data/local/storage_service_provider.dart';
 
 void main() async {
   // runApp(const MyApp());
@@ -31,11 +29,11 @@ void main() async {
       FlutterError.onError = (FlutterErrorDetails details) {
         FlutterError.presentError(details);
       };
+
       ErrorWidget.builder = (FlutterErrorDetails details) {
         return Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.red,
-
             title: const Text('An error occurred'),
           ),
           body: Center(child: Text(details.toString())),

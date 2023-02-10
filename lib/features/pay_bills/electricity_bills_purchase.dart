@@ -1,9 +1,9 @@
-import 'package:cyberpay_mobile_2/core/configs/styles/app_sizes.dart';
+import 'package:cyberpay_mobile_2/common/configs/styles/app_sizes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../core/configs/styles/app_colors.dart';
-import '../../core/widgets/primary_button.dart';
+import '../../common/configs/styles/app_colors.dart';
+import '../../common/widgets/primary_button.dart';
 
 /// ElectricityBillsPurchase
 class ElectricityBillsPurchase extends StatefulWidget {
@@ -26,7 +26,7 @@ class _ElectricityBillsPurchaseState extends State<ElectricityBillsPurchase> {
             centerTitle: true,
             leading: InkWell(
                 onTap: () => Navigator.pop(context),
-                child: Icon(
+                child:const  Icon(
                   CupertinoIcons.back,
                   color: AppColors.primary,
                   size: 40,
@@ -38,14 +38,14 @@ class _ElectricityBillsPurchaseState extends State<ElectricityBillsPurchase> {
                 toolbarHeight: kToolbarHeight,
                 automaticallyImplyLeading: false,
                 flexibleSpace: Container(
-                  margin: EdgeInsets.symmetric(horizontal: 18.0),
+                  margin:const  EdgeInsets.symmetric(horizontal: 18.0),
                   child: Text(
                     'Ikeja Electric Distribution Company',
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
                         color: AppColors.black, fontWeight: FontWeight.bold),
                   ),
                 )),
-            SliverToBoxAdapter(
+                const   SliverToBoxAdapter(
               child: gapH16,
             ),
             SliverToBoxAdapter(
@@ -60,7 +60,7 @@ class _ElectricityBillsPurchaseState extends State<ElectricityBillsPurchase> {
                 boxShadow: [
                   BoxShadow(
                     spreadRadius: 0,
-                    offset: Offset(2, 12),
+                    offset:const  Offset(2, 12),
                     color: Colors.blue.withOpacity(0.3),
                     blurRadius: 20,
                   ),
@@ -88,11 +88,11 @@ class _ElectricityBillsPurchaseState extends State<ElectricityBillsPurchase> {
                               borderRadius: BorderRadius.circular(4),
                             ),
                             child: Padding(
-                                padding: EdgeInsets.only(left: 30, right: 30),
+                                padding:const  EdgeInsets.only(left: 30, right: 30),
                                 child: DropdownButton(
                                   value: 'Ikeja Electric Prepaid',
-                                  items: [
-                                    DropdownMenuItem(
+                                  items: const [
+                                         DropdownMenuItem(
                                       value: 'Ikeja Electric Prepaid',
                                       child: Text('Ikeja Electric Prepaid'),
                                     ),
@@ -101,7 +101,7 @@ class _ElectricityBillsPurchaseState extends State<ElectricityBillsPurchase> {
                                   onChanged: (value) {
                                     print("You have selected $value");
                                   },
-                                  icon: Padding(
+                                  icon: const Padding(
                                       padding: EdgeInsets.only(left: 20),
                                       child: Icon(
                                         CupertinoIcons.chevron_down,
@@ -109,7 +109,7 @@ class _ElectricityBillsPurchaseState extends State<ElectricityBillsPurchase> {
                                       )),
                                   iconEnabledColor: AppColors.primary,
                                   //Icon color
-                                  style: TextStyle(
+                                  style:const  TextStyle(
                                       color: AppColors.primary, fontSize: 12),
 
                                   dropdownColor: Colors.white,
@@ -128,7 +128,7 @@ class _ElectricityBillsPurchaseState extends State<ElectricityBillsPurchase> {
                         ),
                         gapH8,
                         TextFormField(
-                          decoration: InputDecoration(
+                          decoration:const  InputDecoration(
                             hintText: '0.00',
                           ),
                           keyboardType: TextInputType.number,
@@ -150,7 +150,7 @@ class _ElectricityBillsPurchaseState extends State<ElectricityBillsPurchase> {
                         ),
                         gapH8,
                         TextFormField(
-                          decoration: InputDecoration(
+                          decoration:const  InputDecoration(
                             hintText: 'Phone number',
                           ),
                           keyboardType: TextInputType.number,

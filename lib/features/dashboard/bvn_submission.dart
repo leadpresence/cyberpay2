@@ -1,12 +1,12 @@
-import 'package:cyberpay_mobile_2/core/configs/routes/route_paths.dart';
-import 'package:cyberpay_mobile_2/core/widgets/primary_button.dart';
+import 'package:cyberpay_mobile_2/common/configs/routes/route_paths.dart';
+import 'package:cyberpay_mobile_2/common/widgets/primary_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import '../../core/configs/styles/app_assests.dart';
-import '../../core/configs/styles/app_colors.dart';
-import '../../core/configs/styles/app_sizes.dart';
+import '../../common/configs/styles/app_assests.dart';
+import '../../common/configs/styles/app_colors.dart';
+import '../../common/configs/styles/app_sizes.dart';
 
 ///  BvnSubmission View
 class BvnSubmission extends StatefulWidget {
@@ -28,7 +28,7 @@ class _BvnSubmissionState extends State<BvnSubmission> {
                 onTap: (){
                   Navigator.of(context).pop();
                 },
-                child: Icon(
+                child: const Icon(
                   CupertinoIcons.back,
                   color: AppColors.primary,
                   size: 40,
@@ -40,12 +40,11 @@ class _BvnSubmissionState extends State<BvnSubmission> {
                 padding: EdgeInsets.symmetric(vertical: 15, horizontal: 18),
                 child: SizedBox(
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       SvgPicture.asset(AppAssets.profile),
                       gapW4,
                       Column(
-                        children: [
+                        children: const [
                           Text('FACE VERIFICATION',style: TextStyle(color: AppColors.green),),
 
                         ],
@@ -60,7 +59,7 @@ class _BvnSubmissionState extends State<BvnSubmission> {
                       gapW4,
                       Column(
                         children: [
-                          Text('BVN'),
+                          const Text('BVN'),
                           gapH4,
                           Container(
                             height: 2,
@@ -74,15 +73,15 @@ class _BvnSubmissionState extends State<BvnSubmission> {
                 ),
               ),
             ),
-            SliverToBoxAdapter(
+           const SliverToBoxAdapter(
               child: gapH16,
             ),
             SliverToBoxAdapter(
               child: Container(
                 width: screenSize(context).width,
                 height: screenSize(context).height * 0.55,
-                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 18),
-                margin: EdgeInsets.symmetric(horizontal: 18),
+                padding:const EdgeInsets.symmetric(vertical: 15, horizontal: 18),
+                margin: const EdgeInsets.symmetric(horizontal: 18),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.white,
@@ -99,7 +98,7 @@ class _BvnSubmissionState extends State<BvnSubmission> {
 
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                    children: const [
                       Text(
                           'Fill in your BVN details'),
                     ],
@@ -123,7 +122,7 @@ class _BvnSubmissionState extends State<BvnSubmission> {
                   ),
                   gapH8,
                   TextFormField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: 'Email',
                     ),
                     keyboardType: TextInputType.emailAddress,
@@ -160,7 +159,7 @@ class _BvnSubmissionState extends State<BvnSubmission> {
             SliverToBoxAdapter(
               child:
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 25, horizontal: 18),
+                padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 18),
                 child: PrimaryButton(
                   onPressed:  () {
                     context.pushNamed(

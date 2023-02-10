@@ -1,12 +1,12 @@
-import 'package:cyberpay_mobile_2/core/configs/routes/route_paths.dart';
-import 'package:cyberpay_mobile_2/core/configs/styles/app_colors.dart';
+import 'package:cyberpay_mobile_2/common/configs/routes/route_paths.dart';
+import 'package:cyberpay_mobile_2/common/configs/styles/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import '../../core/configs/styles/app_assests.dart';
-import '../../core/utils/app_strings.dart';
-import '../../core/widgets/bubble_dots.dart';
-import '../../core/widgets/primary_button.dart';
+import '../../common/configs/styles/app_assests.dart';
+import '../../common/utils/app_strings.dart';
+import '../../common/widgets/bubble_dots.dart';
+import '../../common/widgets/primary_button.dart';
 import 'CyberpayPreviewScreen.dart';
 
 /// cyberpay Onboarding screens
@@ -113,8 +113,8 @@ class _CyberpayOnBoardingState extends State<CyberpayOnBoarding> {
                                   ),
                                 ) else SizedBox.shrink(),
                           if (currentIndex != 2) InkWell(
-                                  // onTap: () => context.pushNamed(
-                                  //     AppRoute.trusteesSelectUserStatus.name),
+                                  onTap: () => context.pushNamed(
+                                      AppRoute.loginView.name),
                                   child: Text('SKIP',
                                       style: Theme.of(context)
                                           .textTheme

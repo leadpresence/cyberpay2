@@ -1,10 +1,10 @@
-import 'package:cyberpay_mobile_2/core/configs/styles/app_colors.dart';
+import 'package:cyberpay_mobile_2/common/configs/styles/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../core/configs/styles/app_assests.dart';
-import '../../core/configs/styles/app_sizes.dart';
+import '../../common/configs/styles/app_assests.dart';
+import '../../common/configs/styles/app_sizes.dart';
 import 'login_with_email.dart';
 import 'login_with_phone.dart';
 

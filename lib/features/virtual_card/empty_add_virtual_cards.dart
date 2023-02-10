@@ -1,8 +1,8 @@
-import 'package:cyberpay_mobile_2/core/configs/styles/app_sizes.dart';
+import 'package:cyberpay_mobile_2/common/configs/styles/app_sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../core/configs/styles/app_assests.dart';
-import '../../core/configs/styles/app_colors.dart';
+import '../../common/configs/styles/app_assests.dart';
+import '../../common/configs/styles/app_colors.dart';
 
 ///  EmptyCardView StatelessWidget
 class EmptyAddCardView extends StatelessWidget {
@@ -16,7 +16,7 @@ class EmptyAddCardView extends StatelessWidget {
     return Container(
       color: AppColors.ligthBlue,
       height: screenSize(context).width * 0.95,
-      margin: EdgeInsets.symmetric(horizontal: 40),
+      margin:const  EdgeInsets.symmetric(horizontal: 40),
       child: Center(
         child:    SizedBox(
           height: 150,

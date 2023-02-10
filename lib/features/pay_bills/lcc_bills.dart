@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../core/configs/styles/app_colors.dart';
-import '../../core/configs/styles/app_sizes.dart';
-import '../../core/widgets/primary_button.dart';
+import '../../common/configs/styles/app_colors.dart';
+import '../../common/configs/styles/app_sizes.dart';
+import '../../common/widgets/primary_button.dart';
 
 
 class LekkiConsessionPayment extends StatefulWidget {
@@ -24,7 +24,7 @@ class _LekkiConsessionPaymentState extends State<LekkiConsessionPayment> {
           centerTitle: true,
           leading: InkWell(
               onTap: () => Navigator.pop(context),
-              child: Icon(
+              child: const Icon(
                 CupertinoIcons.back,
                 color: AppColors.primary,
                 size: 40,
@@ -36,14 +36,14 @@ class _LekkiConsessionPaymentState extends State<LekkiConsessionPayment> {
                   toolbarHeight: kToolbarHeight,
                   automaticallyImplyLeading: false,
                   flexibleSpace: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 18.0),
+                    margin:const  EdgeInsets.symmetric(horizontal: 18.0),
                     child: Text(
                       'Lekki Concession Company',
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           color: AppColors.black, fontWeight: FontWeight.bold),
                     ),
                   )),
-              SliverToBoxAdapter(
+              const  SliverToBoxAdapter(
                 child: gapH16,
               ),
               SliverToBoxAdapter(
@@ -89,7 +89,7 @@ class _LekkiConsessionPaymentState extends State<LekkiConsessionPayment> {
                                       padding: EdgeInsets.only(left: 30, right: 30),
                                       child: DropdownButton(
                                         value: 'LCC',
-                                        items: [
+                                        items:const  [
                                           DropdownMenuItem(
                                             value: 'LCC',
                                             child: Text('LCC'),
@@ -99,7 +99,7 @@ class _LekkiConsessionPaymentState extends State<LekkiConsessionPayment> {
                                         onChanged: (value) {
                                           print("You have selected $value");
                                         },
-                                        icon: Padding(
+                                        icon:const  Padding(
                                             padding: EdgeInsets.only(left: 20),
                                             child: Icon(
                                               CupertinoIcons.chevron_down,
@@ -107,7 +107,7 @@ class _LekkiConsessionPaymentState extends State<LekkiConsessionPayment> {
                                             )),
                                         iconEnabledColor: AppColors.primary,
                                         //Icon color
-                                        style: TextStyle(
+                                        style:const  TextStyle(
                                             color: AppColors.primary, fontSize: 12),
 
                                         dropdownColor: Colors.white,
@@ -126,7 +126,7 @@ class _LekkiConsessionPaymentState extends State<LekkiConsessionPayment> {
                               ),
                               gapH8,
                               TextFormField(
-                                decoration: InputDecoration(
+                                decoration:const  InputDecoration(
                                   hintText: '0.00',
                                 ),
                                 keyboardType: TextInputType.number,
@@ -148,7 +148,7 @@ class _LekkiConsessionPaymentState extends State<LekkiConsessionPayment> {
                               ),
                               gapH8,
                               TextFormField(
-                                decoration: InputDecoration(
+                                decoration:const  InputDecoration(
                                   hintText: 'Phone number',
                                 ),
                                 keyboardType: TextInputType.number,

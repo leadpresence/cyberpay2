@@ -22,7 +22,7 @@ class _TabDollarCardViewState extends State<TabDollarCardView> {
         body: CustomScrollView(
       slivers: [
         if (listOfCards.isNotEmpty == true)
-          SliverToBoxAdapter(
+          const  SliverToBoxAdapter(
             child: EmptyAddCardView(),
           )
         else

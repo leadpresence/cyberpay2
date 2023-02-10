@@ -1,16 +1,16 @@
 import 'dart:math' as math;
 
-import 'package:cyberpay_mobile_2/core/configs/routes/route_paths.dart';
-import 'package:cyberpay_mobile_2/core/configs/styles/app_colors.dart';
-import 'package:cyberpay_mobile_2/core/configs/styles/app_sizes.dart';
-import 'package:cyberpay_mobile_2/core/utils/app_strings.dart';
+import 'package:cyberpay_mobile_2/common/configs/routes/route_paths.dart';
+import 'package:cyberpay_mobile_2/common/configs/styles/app_colors.dart';
+import 'package:cyberpay_mobile_2/common/configs/styles/app_sizes.dart';
+import 'package:cyberpay_mobile_2/common/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:path/path.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
-import '../../core/configs/styles/app_assests.dart';
+import '../../common/configs/styles/app_assests.dart';
 
 /// Home to Cyberpay app
 class DashboardHome extends StatefulWidget {
@@ -50,12 +50,19 @@ class _DashboardHomeState extends State<DashboardHome> {
               elevation: kToolbarHeight * 2,
               leading: const SizedBox.shrink(),
               actions: [
-                GestureDetector(
+                InkWell(
+                    borderRadius: const BorderRadius.all(Radius.circular(15)),
+                  splashColor: AppColors.primary.withOpacity(0.3),
                   onTap: ()=>context.pushNamed(AppRoute.profileView.name),
                     child: SvgPicture.asset(AppAssets.settings)),
-                Padding(
-                  padding: const EdgeInsets.only(right: 18.0, left: 8),
-                  child: SvgPicture.asset(AppAssets.notifications),
+                InkWell(
+                  borderRadius: const BorderRadius.all(Radius.circular(15)),
+                  splashColor: AppColors.primary.withOpacity(0.3),
+                  onTap: ()=>context.pushNamed(AppRoute.transactions.name),
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 18.0, left: 8),
+                    child: SvgPicture.asset(AppAssets.notifications),
+                  ),
                 ),
               ],
               centerTitle: true,
@@ -140,14 +147,28 @@ class _DashboardHomeState extends State<DashboardHome> {
                                   color: AppColors.white,
                                   fontWeight: FontWeight.w800)),
                       gapH8,
-                      Text('0.00',
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context)
-                              .textTheme
-                              .headlineLarge
-                              ?.copyWith(
-                                  color: AppColors.white,
-                                  fontWeight: FontWeight.w800)),
+                    SizedBox(
+                      width: screenSize(context).width*0.3,
+                      height: 40,
+                      child: Wrap(
+                          children: [
+                            Text('₦',style: Theme.of(context)
+                                .textTheme
+                                .headlineLarge
+                                ?.copyWith(color: AppColors.white,
+                                fontWeight: FontWeight.w800)),
+                            Text('0.00',
+                              textAlign: TextAlign.center,
+                              maxLines: 1,
+                              overflow: TextOverflow.fade,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineLarge
+                                  ?.copyWith(
+                                      color: AppColors.white,
+                                      fontWeight: FontWeight.w800))],
+                        ),
+                    ),
                       gapH8,
                       Padding(
                         padding: const EdgeInsets.all(2.0),
@@ -175,26 +196,32 @@ class _DashboardHomeState extends State<DashboardHome> {
                               ),
                             ),
                             SvgPicture.asset(AppAssets.hide_balance),
-                            Container(
-                              padding: const EdgeInsets.all(4),
-                              height: 20,
-                              width: 65,
-                              decoration: const BoxDecoration(
-                                color: AppColors.white,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(8)),
-                              ),
-                              child: Text(
-                                'TOP-UP',
-                                textAlign: TextAlign.center,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleSmall
-                                    ?.copyWith(
-                                        color: AppColors.black,
-                                        fontWeight: FontWeight.bold),
+                            InkWell(
+                              splashColor: AppColors.primary.withOpacity(0.3),
+                              borderRadius:
+                              const BorderRadius.all(Radius.circular(15)),
+                              onTap: ()=>context.pushNamed(AppRoute.walletTopUp.name),
+                              child: Container(
+                                padding: const EdgeInsets.all(4),
+                                height: 20,
+                                width: 65,
+                                decoration: const BoxDecoration(
+                                  color: AppColors.white,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(8)),
+                                ),
+                                child: Text(
+                                  'TOP-UP',
+                                  textAlign: TextAlign.center,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleSmall
+                                      ?.copyWith(
+                                          color: AppColors.black,
+                                          fontWeight: FontWeight.bold),
+                                ),
                               ),
                             ),
                           ],
@@ -272,14 +299,14 @@ class _DashboardHomeState extends State<DashboardHome> {
                        /// Bills
                         context.pushNamed(AppRoute.payUtilityBills.name);
                       } else if (index==3) {
-                        /// Airtime
+                        /// Airtime & Data
                         context.pushNamed(AppRoute.airtimeAndData.name);
                       } else if (index==4) {
-                        /// Data
-                        context.pushNamed(AppRoute.airtimeAndData.name);
-                      } else if (index==5) {
-                        /// Virtual card
+                        /// virtualCardView
                         context.pushNamed(AppRoute.virtualCardView.name);
+                      } else if (index==5) {
+                        /// gaming
+                        // context.pushNamed(AppRoute.gaming.name);
                       }
 
                     },

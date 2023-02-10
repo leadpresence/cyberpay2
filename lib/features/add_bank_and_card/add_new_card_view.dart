@@ -1,13 +1,13 @@
-import 'package:cyberpay_mobile_2/core/configs/styles/app_assests.dart';
-import 'package:cyberpay_mobile_2/core/widgets/leading_icon_custom_text_field.dart';
-import 'package:cyberpay_mobile_2/core/widgets/primary_button.dart';
+import 'package:cyberpay_mobile_2/common/configs/styles/app_assests.dart';
+import 'package:cyberpay_mobile_2/common/widgets/leading_icon_custom_text_field.dart';
+import 'package:cyberpay_mobile_2/common/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../core/configs/routes/route_paths.dart';
-import '../../core/configs/styles/app_colors.dart';
-import '../../core/configs/styles/app_sizes.dart';
+import '../../common/configs/routes/route_paths.dart';
+import '../../common/configs/styles/app_colors.dart';
+import '../../common/configs/styles/app_sizes.dart';
 
 class AddNewCard extends StatefulWidget {
   const AddNewCard({Key? key}) : super(key: key);

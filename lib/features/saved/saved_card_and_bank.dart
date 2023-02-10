@@ -4,10 +4,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../core/configs/styles/app_colors.dart';
-import '../../core/configs/styles/app_sizes.dart';
+import '../../common/configs/styles/app_colors.dart';
+import '../../common/configs/styles/app_sizes.dart';
 
+/// SavedBankAndCardMainView
 class SavedBankAndCardMainView extends StatefulWidget {
+  /// creates a constructor for [SavedBankAndCardMainView]
+
   const SavedBankAndCardMainView({Key? key}) : super(key: key);
 
   @override
@@ -27,7 +30,7 @@ class _SavedBankAndCardMainViewState extends State<SavedBankAndCardMainView> {
               centerTitle: true,
               leading: InkWell(
                   onTap: () => context.pop,
-                  child: Icon(
+                  child:const Icon(
                     CupertinoIcons.back,
                     color: AppColors.primary,
                     size: 40,
@@ -72,11 +75,11 @@ class _SavedBankAndCardMainViewState extends State<SavedBankAndCardMainView> {
                               ),
                               child: TabBar(
                                 // controller: _tabController,
-                                labelStyle: TextStyle(
+                                labelStyle:const TextStyle(
                                     color: AppColors.white,
                                     fontSize: 12.0,
                                     fontWeight: FontWeight.bold),
-                                unselectedLabelStyle: TextStyle(
+                                unselectedLabelStyle:const TextStyle(
                                     fontSize: 12.0,
                                     color: AppColors.white,
                                     fontWeight: FontWeight.bold),
@@ -93,7 +96,7 @@ class _SavedBankAndCardMainViewState extends State<SavedBankAndCardMainView> {
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(4),
                                       ),
-                                      child: Align(child: Text('Bank')),
+                                      child:const Align(child: Text('Bank')),
                                     ),
                                   ),
                                   Tab(
@@ -101,7 +104,7 @@ class _SavedBankAndCardMainViewState extends State<SavedBankAndCardMainView> {
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(4),
                                       ),
-                                      child: Align(child: Text('Cards')),
+                                      child:const Align(child: Text('Cards')),
                                     ),
                                   ),
                                 ],
@@ -111,7 +114,7 @@ class _SavedBankAndCardMainViewState extends State<SavedBankAndCardMainView> {
                         ),
                       ),
 
-                      SliverFillRemaining(
+                      const  SliverFillRemaining(
                         child: TabBarView(
                           physics: const NeverScrollableScrollPhysics(),
                           children: [

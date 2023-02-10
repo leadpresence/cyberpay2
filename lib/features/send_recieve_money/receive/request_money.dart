@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import '../../../core/configs/routes/route_paths.dart';
-import '../../../core/configs/styles/app_assests.dart';
-import '../../../core/configs/styles/app_colors.dart';
-import '../../../core/configs/styles/app_sizes.dart';
-import '../../../core/widgets/CustomExpandableCard.dart';
-import '../../../core/widgets/primary_button.dart';
+import '../../../common/configs/routes/route_paths.dart';
+import '../../../common/configs/styles/app_assests.dart';
+import '../../../common/configs/styles/app_colors.dart';
+import '../../../common/configs/styles/app_sizes.dart';
+import '../../../common/widgets/CustomExpandableCard.dart';
+import '../../../common/widgets/primary_button.dart';
 
 
 
@@ -34,7 +34,7 @@ class _RequestMoneyState extends State<RequestMoney> {
         centerTitle: true,
         leading: InkWell(
             onTap: () => Navigator.pop(context),
-            child: Icon(
+            child:const  Icon(
               CupertinoIcons.back,
               color: AppColors.primary,
               size: 40,
@@ -47,7 +47,7 @@ class _RequestMoneyState extends State<RequestMoney> {
               toolbarHeight: kToolbarHeight,
               automaticallyImplyLeading: false,
               flexibleSpace: Container(
-                margin: EdgeInsets.symmetric(horizontal: 18.0),
+                margin:const  EdgeInsets.symmetric(horizontal: 18.0),
                 child: Text(
                   'Request Money',
                   style: Theme.of(context).textTheme.headline5?.copyWith(
@@ -91,27 +91,27 @@ class _RequestMoneyState extends State<RequestMoney> {
                                         borderRadius: BorderRadius.circular(4),
                                       ),
                                       child: Padding(
-                                          padding: EdgeInsets.only(
+                                          padding:const EdgeInsets.only(
                                               left: 30, right: 30),
                                           child: DropdownButton(
-                                            value: "Wallet 1",
-                                            items: [
+                                            value: 'Wallet 1',
+                                            items:const [
                                               DropdownMenuItem(
-                                                child: Text("Wallet 1"),
                                                 value: "Wallet 1",
+                                                child: Text('Wallet 1'),
                                               ),
                                               DropdownMenuItem(
-                                                  child: Text("Wallet 2"),
-                                                  value: "Wallet 2"),
+                                                  value: "Wallet 2",
+                                                  child: Text('Wallet 2')),
                                               DropdownMenuItem(
-                                                child: Text("Wallet 3"),
-                                                value: "Wallet 3",
+                                                value: 'Wallet 3',
+                                                child: Text('Wallet 3'),
                                               )
                                             ],
                                             onChanged: (value) {
                                               print("You have selected $value");
                                             },
-                                            icon: Padding(
+                                            icon:const Padding(
                                                 padding:
                                                     EdgeInsets.only(left: 20),
                                                 child: Icon(
@@ -120,7 +120,7 @@ class _RequestMoneyState extends State<RequestMoney> {
                                                 )),
                                             iconEnabledColor: AppColors.primary,
                                             //Icon color
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 color: AppColors.primary,
                                                 fontSize: 12),
 
@@ -144,7 +144,7 @@ class _RequestMoneyState extends State<RequestMoney> {
                                   ),
                                   gapH8,
                                   TextFormField(
-                                    decoration: InputDecoration(
+                                    decoration:const InputDecoration(
                                       hintText: '0.00',
                                     ),
                                     keyboardType: TextInputType.number,
@@ -190,8 +190,8 @@ class _RequestMoneyState extends State<RequestMoney> {
                         child: Column(
                           children: [
                             Wrap(
-                              children: [
-                                Text(
+                              children: const[
+                                   Text(
                                     'https://cyberpay-wallets-frontend.vercel.app/pay/adaanya7049215647')
                               ],
                             ),
@@ -212,7 +212,7 @@ class _RequestMoneyState extends State<RequestMoney> {
                                             backgroundColor:
                                                 AppColors.dark_blue,
                                             shape: RoundedRectangleBorder(
-                                              side: BorderSide(
+                                              side:const BorderSide(
                                                 width: 1, // thickness
                                                 color: AppColors
                                                     .dark_blue, // color
@@ -222,8 +222,8 @@ class _RequestMoneyState extends State<RequestMoney> {
                                             ),
                                           ),
                                           onPressed: () {
-                                            Clipboard.setData( ClipboardData(text:  'https://cyberpay-wallets-frontend.vercel.app/pay/adaanya7049215647'));
-                                            ScaffoldMessenger.of(context).showSnackBar( SnackBar(
+                                            Clipboard.setData( const ClipboardData(text:  'https://cyberpay-wallets-frontend.vercel.app/pay/adaanya7049215647'));
+                                            ScaffoldMessenger.of(context).showSnackBar( const SnackBar(
                                               content: Text('Copied  https://cyberpay-wallets-frontend.vercel.app/pay/adaanya7049215647'),
                                             ));
                                           },
@@ -266,7 +266,7 @@ class _RequestMoneyState extends State<RequestMoney> {
                                             backgroundColor:
                                                 AppColors.dark_blue,
                                             shape: RoundedRectangleBorder(
-                                              side: BorderSide(
+                                              side:const BorderSide(
                                                 width: 1, // thickness
                                                 color: AppColors
                                                     .dark_blue, // color
@@ -324,8 +324,8 @@ class _RequestMoneyState extends State<RequestMoney> {
                         child: Column(
                           children: [
                             Wrap(
-                              children: [
-                                Text(
+                              children:const [
+                                    Text(
                                     'Virtual Account No : 2345678910 (Wema Bank)')
                               ],
                             ),
@@ -346,7 +346,7 @@ class _RequestMoneyState extends State<RequestMoney> {
                                             backgroundColor:
                                                 AppColors.dark_blue,
                                             shape: RoundedRectangleBorder(
-                                              side: BorderSide(
+                                              side:const BorderSide(
                                                 width: 1, // thickness
                                                 color: AppColors
                                                     .dark_blue, // color
@@ -395,7 +395,7 @@ class _RequestMoneyState extends State<RequestMoney> {
                                             backgroundColor:
                                                 AppColors.dark_blue,
                                             shape: RoundedRectangleBorder(
-                                              side: BorderSide(
+                                              side:const BorderSide(
                                                 width: 1, // thickness
                                                 color: AppColors
                                                     .dark_blue, // color

@@ -1,10 +1,10 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../core/configs/styles/app_assests.dart';
-import '../../core/configs/styles/app_colors.dart';
-import '../../core/configs/styles/app_sizes.dart';
-import '../../core/widgets/bubble_dots.dart';
+import '../../common/configs/styles/app_assests.dart';
+import '../../common/configs/styles/app_colors.dart';
+import '../../common/configs/styles/app_sizes.dart';
+import '../../common/widgets/bubble_dots.dart';
 
 /// Virtual Cards Preview
 class VirtualCardsPreview extends StatefulWidget {
@@ -29,8 +29,8 @@ class _VirtualCardsPreviewState extends State<VirtualCardsPreview> {
           // margin: const EdgeInsets.symmetric(horizontal: 18),
           padding: EdgeInsets.only(left: 25, right: 25),
           width: screenSize(context).width,
-          decoration: BoxDecoration(
-            image: DecorationImage(
+          decoration: const BoxDecoration(
+            image:  DecorationImage(
                 fit: BoxFit.cover,
                 image: AssetImage(AppAssets.virtual_card_png_bg)),
             borderRadius: BorderRadius.all(Radius.circular(8)),

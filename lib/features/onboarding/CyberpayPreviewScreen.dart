@@ -31,7 +31,7 @@ class _CyberpayPreviewScreen extends State<CyberpayPreviewScreen> {
       children: [
         Flexible(
           child: Container(
-            margin: EdgeInsets.only(left: 16,right: 16,top: 10),
+            margin:const  EdgeInsets.only(left: 16,right: 16,top: 10),
             child: Image.asset(
               widget.image,
               height: 302,//MediaQuery.of(context).size.height/2+100,
@@ -40,7 +40,7 @@ class _CyberpayPreviewScreen extends State<CyberpayPreviewScreen> {
             ),
           ),
         ),
-        SizedBox(height: 10,),
+        const   SizedBox(height: 10,),
         Padding(
           padding: const EdgeInsets.only(top: 4.0),
           child: Row(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'core/configs/routes/route_paths.dart';
-import 'core/configs/styles/app_theme.dart';
-import 'core/configs/styles/theme/app_theme_provider.dart';
+import 'common/configs/routes/route_paths.dart';
+import 'common/configs/styles/app_theme.dart';
+import 'common/configs/styles/theme/app_theme_provider.dart';
 
 /// Main App Widget
 class CyberPayApp extends ConsumerStatefulWidget {

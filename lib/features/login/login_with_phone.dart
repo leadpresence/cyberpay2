@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../core/configs/routes/route_paths.dart';
-import '../../core/configs/styles/app_assests.dart';
-import '../../core/configs/styles/app_colors.dart';
-import '../../core/configs/styles/app_sizes.dart';
-import '../../core/widgets/primary_button.dart';
+import '../../common/configs/routes/route_paths.dart';
+import '../../common/configs/styles/app_assests.dart';
+import '../../common/configs/styles/app_colors.dart';
+import '../../common/configs/styles/app_sizes.dart';
+import '../../common/widgets/primary_button.dart';
 
 class LoginWithPhone extends StatefulWidget {
   const LoginWithPhone({Key? key}) : super(key: key);
@@ -41,7 +41,7 @@ class _LoginWithPhoneState extends State<LoginWithPhone> {
               ),
               gapH8,
               TextFormField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: 'phone',
                 ),
                 keyboardType: TextInputType.phone,
@@ -68,7 +68,7 @@ class _LoginWithPhoneState extends State<LoginWithPhone> {
               gapH8,
               TextFormField(
                 obscureText: true,
-                decoration: InputDecoration(
+                decoration:const  InputDecoration(
                   hintText: '*******',
                 ),
                 keyboardType:

@@ -1,9 +1,9 @@
-import 'package:cyberpay_mobile_2/core/configs/styles/app_sizes.dart';
+import 'package:cyberpay_mobile_2/common/configs/styles/app_sizes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../core/configs/styles/app_colors.dart';
-import '../../core/widgets/primary_button.dart';
+import '../../common/configs/styles/app_colors.dart';
+import '../../common/widgets/primary_button.dart';
 
 /// AirtimePurchaseDetails
 class AirtimePurchaseDetails extends StatefulWidget {
@@ -15,7 +15,7 @@ class AirtimePurchaseDetails extends StatefulWidget {
 }
 
 class _AirtimePurchaseDetailsState extends State<AirtimePurchaseDetails> {
-  final airtimeFormKey = GlobalKey<FormState>();
+    final airtimeFormKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -26,14 +26,16 @@ class _AirtimePurchaseDetailsState extends State<AirtimePurchaseDetails> {
           centerTitle: true,
           leading: InkWell(
               onTap: () => Navigator.pop(context),
-              child: Icon(
+              child:const  Icon(
                 CupertinoIcons.back,
                 color: AppColors.primary,
                 size: 40,
               )),
         ),
         body: SafeArea(
-            child: CustomScrollView(slivers: [
+            child: CustomScrollView(
+                physics: const  BouncingScrollPhysics(),
+                slivers: [
           SliverAppBar(
               toolbarHeight: kToolbarHeight,
               automaticallyImplyLeading: false,
@@ -45,22 +47,22 @@ class _AirtimePurchaseDetailsState extends State<AirtimePurchaseDetails> {
                       color: AppColors.black, fontWeight: FontWeight.bold),
                 ),
               )),
-          SliverToBoxAdapter(
+              const     SliverToBoxAdapter(
             child: gapH16,
           ),
           SliverToBoxAdapter(
               child: Container(
             width: screenSize(context).width,
             height: screenSize(context).height * 0.65,
-            padding: EdgeInsets.symmetric(vertical: 15, horizontal: 18),
-            margin: EdgeInsets.symmetric(horizontal: 18),
+            padding:const  EdgeInsets.symmetric(vertical: 15, horizontal: 18),
+            margin: const EdgeInsets.symmetric(horizontal: 18),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
                   spreadRadius: 0,
-                  offset: Offset(2, 12),
+                  offset:const  Offset(2, 12),
                   color: Colors.blue.withOpacity(0.3),
                   blurRadius: 20,
                 ),
@@ -91,7 +93,7 @@ class _AirtimePurchaseDetailsState extends State<AirtimePurchaseDetails> {
                               padding: EdgeInsets.only(left: 30, right: 30),
                               child: DropdownButton(
                                 value: 'Virtual Top-Up (VTU)',
-                                items: [
+                                items:const  [
                                   DropdownMenuItem(
                                     value: 'Virtual Top-Up (VTU)',
                                     child: Text('Virtual Top-Up (VTU)'),
@@ -107,7 +109,7 @@ class _AirtimePurchaseDetailsState extends State<AirtimePurchaseDetails> {
                                 onChanged: (value) {
                                   print("You have selected $value");
                                 },
-                                icon: Padding(
+                                icon:const  Padding(
                                     padding: EdgeInsets.only(left: 20),
                                     child: Icon(
                                       CupertinoIcons.chevron_down,
@@ -115,7 +117,7 @@ class _AirtimePurchaseDetailsState extends State<AirtimePurchaseDetails> {
                                     )),
                                 iconEnabledColor: AppColors.primary,
                                 //Icon color
-                                style: TextStyle(
+                                style:const  TextStyle(
                                     color: AppColors.primary, fontSize: 12),
 
                                 dropdownColor: Colors.white,
@@ -134,7 +136,7 @@ class _AirtimePurchaseDetailsState extends State<AirtimePurchaseDetails> {
                       ),
                       gapH8,
                       TextFormField(
-                        decoration: InputDecoration(
+                        decoration:const  InputDecoration(
                           hintText: '0.00',
                         ),
                         keyboardType: TextInputType.number,
@@ -156,7 +158,7 @@ class _AirtimePurchaseDetailsState extends State<AirtimePurchaseDetails> {
                       ),
                       gapH8,
                       TextFormField(
-                        decoration: InputDecoration(
+                        decoration:const  InputDecoration(
                           hintText: 'Phone number',
                         ),
                         keyboardType: TextInputType.number,

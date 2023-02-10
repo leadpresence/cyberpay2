@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:cyberpay_mobile_2/core/configs/routes/route_paths.dart';
-import 'package:cyberpay_mobile_2/core/configs/styles/app_assests.dart';
+import 'package:cyberpay_mobile_2/common/configs/routes/route_paths.dart';
+import 'package:cyberpay_mobile_2/common/configs/styles/app_assests.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';

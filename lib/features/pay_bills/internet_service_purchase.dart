@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../core/configs/styles/app_colors.dart';
-import '../../core/configs/styles/app_sizes.dart';
-import '../../core/widgets/primary_button.dart';
+import '../../common/configs/styles/app_colors.dart';
+import '../../common/configs/styles/app_sizes.dart';
+import '../../common/widgets/primary_button.dart';
 
 /// InternetServicePurchase
 class InternetServicePurchase extends StatefulWidget {

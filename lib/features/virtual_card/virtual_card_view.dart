@@ -1,11 +1,12 @@
-import 'package:cyberpay_mobile_2/core/configs/routes/route_paths.dart';
+import 'package:cyberpay_mobile_2/common/configs/routes/route_paths.dart';
 import 'package:cyberpay_mobile_2/features/virtual_card/tab_dollar_card_view.dart';
 import 'package:cyberpay_mobile_2/features/virtual_card/tab_naira_card_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../../core/configs/styles/app_colors.dart';
-import '../../core/configs/styles/app_sizes.dart';
+import '../../common/configs/styles/app_colors.dart';
+import '../../common/configs/styles/app_sizes.dart';
+
 
 /// virtual card view
 class VirtualCards extends StatefulWidget {
@@ -24,9 +25,9 @@ class _VirtualCardsState extends State<VirtualCards> {
         child: Scaffold(
             resizeToAvoidBottomInset: true,
             appBar: AppBar(
-              leading: InkWell(
-                  onTap: () => Navigator.pop,
-                  child: Icon(
+              leading: GestureDetector(
+                  onTap: () => Navigator.pop(context),
+                  child: const Icon(
                     CupertinoIcons.back,
                     color: AppColors.primary,
                     size: 40,
@@ -49,7 +50,8 @@ class _VirtualCardsState extends State<VirtualCards> {
                     slivers: [
                       SliverAppBar(
                         automaticallyImplyLeading: false,
-                        flexibleSpace: Column(
+                        flexibleSpace:
+                        Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
@@ -61,11 +63,11 @@ class _VirtualCardsState extends State<VirtualCards> {
                                 ),
                               ),
                               child: TabBar(
-                                labelStyle: TextStyle(
+                                labelStyle: const TextStyle(
                                     color: AppColors.white,
                                     fontSize: 12.0,
                                     fontWeight: FontWeight.bold),
-                                unselectedLabelStyle: TextStyle(
+                                unselectedLabelStyle:const TextStyle(
                                     fontSize: 12.0,
                                     color: AppColors.white,
                                     fontWeight: FontWeight.bold),
@@ -82,7 +84,7 @@ class _VirtualCardsState extends State<VirtualCards> {
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(4),
                                       ),
-                                      child: Align(child: Text('DOLLAR CARD')),
+                                      child:const Align(child: Text('DOLLAR CARD')),
                                     ),
                                   ),
                                   Tab(
@@ -90,7 +92,7 @@ class _VirtualCardsState extends State<VirtualCards> {
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(4),
                                       ),
-                                      child: Align(child: Text('NAIRA CARD')),
+                                      child:const Align(child: Text('NAIRA CARD')),
                                     ),
                                   ),
                                 ],
@@ -112,7 +114,7 @@ class _VirtualCardsState extends State<VirtualCards> {
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: AppColors.red,
                                     shape: RoundedRectangleBorder(
-                                      side: BorderSide(
+                                      side: const BorderSide(
                                         width: 1, // thickness
                                         color: AppColors.red, // color
                                       ),
@@ -131,10 +133,10 @@ class _VirtualCardsState extends State<VirtualCards> {
                           ],
                         ),
                       ),
-                      SliverToBoxAdapter(child: gapH16),
-                      SliverFillRemaining(
+                     const SliverToBoxAdapter(child: gapH16),
+                      const SliverFillRemaining(
                         child: TabBarView(
-                          physics: const NeverScrollableScrollPhysics(),
+                          physics: NeverScrollableScrollPhysics(),
                           children: [
                             TabDollarCardView(),
                             TabNairaCard(),

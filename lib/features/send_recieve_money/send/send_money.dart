@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../core/configs/routes/route_paths.dart';
-import '../../../core/configs/styles/app_assests.dart';
-import '../../../core/configs/styles/app_colors.dart';
-import '../../../core/configs/styles/app_sizes.dart';
-import '../../../core/widgets/primary_button.dart';
+import '../../../common/configs/routes/route_paths.dart';
+import '../../../common/configs/styles/app_assests.dart';
+import '../../../common/configs/styles/app_colors.dart';
+import '../../../common/configs/styles/app_sizes.dart';
+import '../../../common/widgets/primary_button.dart';
 import '../../sign_up/account_creation_view.dart';
 
 class SendMoney extends StatefulWidget {
@@ -29,7 +29,7 @@ class _SendMoneyState extends State<SendMoney> {
           centerTitle: true,
           leading: InkWell(
               onTap: () => Navigator.pop(context),
-              child: Icon(
+              child:const Icon(
                 CupertinoIcons.back,
                 color: AppColors.primary,
                 size: 40,

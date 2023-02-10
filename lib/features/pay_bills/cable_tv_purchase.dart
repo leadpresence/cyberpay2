@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:cyberpay_mobile_2/core/configs/styles/app_sizes.dart';
+import 'package:cyberpay_mobile_2/common/configs/styles/app_sizes.dart';
 import 'package:flutter/cupertino.dart';
-import '../../core/configs/styles/app_colors.dart';
-import '../../core/widgets/primary_button.dart';
+import '../../common/configs/styles/app_colors.dart';
+import '../../common/widgets/primary_button.dart';
 
 
 /// CableTvPurchase
@@ -26,7 +26,7 @@ class _CableTvPurchaseState extends State<CableTvPurchase> {
           centerTitle: true,
           leading: InkWell(
               onTap: () => Navigator.pop(context),
-              child: Icon(
+              child: const Icon(
                 CupertinoIcons.back,
                 color: AppColors.primary,
                 size: 40,
@@ -38,29 +38,29 @@ class _CableTvPurchaseState extends State<CableTvPurchase> {
                   toolbarHeight: kToolbarHeight,
                   automaticallyImplyLeading: false,
                   flexibleSpace: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 18.0),
+                    margin:const  EdgeInsets.symmetric(horizontal: 18.0),
                     child: Text(
                       'TV Subscription',
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           color: AppColors.black, fontWeight: FontWeight.bold),
                     ),
                   )),
-              SliverToBoxAdapter(
+              const  SliverToBoxAdapter(
                 child: gapH16,
               ),
               SliverToBoxAdapter(
                   child: Container(
                     width: screenSize(context).width,
                     height: screenSize(context).height * 0.65,
-                    padding: EdgeInsets.symmetric(vertical: 15, horizontal: 18),
-                    margin: EdgeInsets.symmetric(horizontal: 18),
+                    padding:const  EdgeInsets.symmetric(vertical: 15, horizontal: 18),
+                    margin:const  EdgeInsets.symmetric(horizontal: 18),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.white,
                       boxShadow: [
                         BoxShadow(
                           spreadRadius: 0,
-                          offset: Offset(2, 12),
+                          offset:const  Offset(2, 12),
                           color: Colors.blue.withOpacity(0.3),
                           blurRadius: 20,
                         ),
@@ -88,10 +88,10 @@ class _CableTvPurchaseState extends State<CableTvPurchase> {
                                     borderRadius: BorderRadius.circular(4),
                                   ),
                                   child: Padding(
-                                      padding: EdgeInsets.only(left: 30, right: 30),
+                                      padding:const  EdgeInsets.only(left: 30, right: 30),
                                       child: DropdownButton(
                                         value: 'GOTV LITE (ANNUAL)'  ,
-                                        items: [
+                                        items:const  [
                                           DropdownMenuItem(
                                             value: 'GOTV LITE (ANNUAL)',
                                             child: Text('GOTV LITE (ANNUAL)'),
@@ -117,7 +117,7 @@ class _CableTvPurchaseState extends State<CableTvPurchase> {
                                             selectedPlan = value!;
                                           });
                                         },
-                                        icon: Padding(
+                                        icon:const  Padding(
                                             padding: EdgeInsets.only(left: 20),
                                             child: Icon(
                                               CupertinoIcons.chevron_down,
@@ -125,7 +125,7 @@ class _CableTvPurchaseState extends State<CableTvPurchase> {
                                             )),
                                         iconEnabledColor: AppColors.primary,
                                         //Icon color
-                                        style: TextStyle( color: AppColors.primary, fontSize: 12 ),
+                                        style: const TextStyle( color: AppColors.primary, fontSize: 12 ),
                                         dropdownColor: Colors.white,
                                         //dropdown background color
                                         underline: Container(),
@@ -142,7 +142,7 @@ class _CableTvPurchaseState extends State<CableTvPurchase> {
                               ),
                               gapH8,
                               TextFormField(
-                                decoration: InputDecoration(
+                                decoration:const  InputDecoration(
                                   hintText: '0.00',
                                 ),
                                 keyboardType: TextInputType.number,
@@ -164,7 +164,7 @@ class _CableTvPurchaseState extends State<CableTvPurchase> {
                               ),
                               gapH8,
                               TextFormField(
-                                decoration: InputDecoration(
+                                decoration:const  InputDecoration(
                                   hintText: 'Phone number',
                                 ),
 

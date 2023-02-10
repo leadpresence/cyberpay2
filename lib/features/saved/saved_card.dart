@@ -1,12 +1,12 @@
-import 'package:cyberpay_mobile_2/core/configs/styles/app_colors.dart';
-import 'package:cyberpay_mobile_2/core/configs/styles/app_sizes.dart';
+import 'package:cyberpay_mobile_2/common/configs/styles/app_colors.dart';
+import 'package:cyberpay_mobile_2/common/configs/styles/app_sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../core/configs/routes/route_paths.dart';
-import '../../core/configs/styles/app_assests.dart';
+import '../../common/configs/routes/route_paths.dart';
+import '../../common/configs/styles/app_assests.dart';
 import '../virtual_card/card_preview.dart';
 
 class SavedCards extends StatelessWidget {

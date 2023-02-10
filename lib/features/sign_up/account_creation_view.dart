@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:cyberpay_mobile_2/core/configs/styles/app_colors.dart';
+import 'package:cyberpay_mobile_2/common/configs/styles/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -8,11 +8,11 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-import '../../core/configs/routes/route_paths.dart';
-import '../../core/configs/styles/app_assests.dart';
-import '../../core/configs/styles/app_sizes.dart';
-import '../../core/widgets/primary_button.dart';
-import '../../core/widgets/top_indicator.dart';
+import '../../common/configs/routes/route_paths.dart';
+import '../../common/configs/styles/app_assests.dart';
+import '../../common/configs/styles/app_sizes.dart';
+import '../../common/widgets/primary_button.dart';
+import '../../common/widgets/top_indicator.dart';
 
 ///  AccountCreationView
 class AccountCreationView extends StatefulWidget {
@@ -43,11 +43,11 @@ class _AccountCreationViewState extends State<AccountCreationView> {
     return Scaffold(
         resizeToAvoidBottomInset: true,
         appBar: AppBar(
-          leading: Icon(CupertinoIcons.back, color: AppColors.primary,size: 40,),
+          leading:const  Icon(CupertinoIcons.back, color: AppColors.primary,size: 40,),
           elevation: 0,
           centerTitle: true,
           title: Container(
-              margin: EdgeInsets.only(bottom: 20, top: 10),
+              margin:const  EdgeInsets.only(bottom: 20, top: 10),
               height: 30,
               child: Center(child: SvgPicture.asset(AppAssets.cyberpayLogo))),
         ),
@@ -153,7 +153,7 @@ class _AccountCreationViewState extends State<AccountCreationView> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     gapH8,
-                                    TopIndicator(
+                               const     TopIndicator(
                                         isProfileView: true,
                                         isPinView: false,
                                         isVerificationView: false),
@@ -169,8 +169,8 @@ class _AccountCreationViewState extends State<AccountCreationView> {
                                           ),
                                     ),
                                     gapH8,
-                                    TextFormField(
-                                      decoration: InputDecoration(
+                                   TextFormField(
+                                      decoration:const InputDecoration(
                                         hintText: 'First Name',
                                       ),
                                       onChanged: (String? value) {
@@ -235,7 +235,7 @@ class _AccountCreationViewState extends State<AccountCreationView> {
                                     ),
                                     gapH8,
                                     TextFormField(
-                                      decoration: InputDecoration(
+                                      decoration: const InputDecoration(
                                         hintText: 'Email',
                                       ),
                                       keyboardType: TextInputType.emailAddress,
@@ -261,7 +261,7 @@ class _AccountCreationViewState extends State<AccountCreationView> {
                                     ),
                                     gapH8,
                                     TextFormField(
-                                      decoration: InputDecoration(
+                                      decoration:const  InputDecoration(
                                         hintText: 'phone',
                                       ),
                                       keyboardType: TextInputType.phone,
@@ -288,7 +288,7 @@ class _AccountCreationViewState extends State<AccountCreationView> {
                                     gapH8,
                                     TextFormField(
                                       obscureText: true,
-                                      decoration: InputDecoration(
+                                      decoration:const  InputDecoration(
                                         hintText: '*******',
                                       ),
                                       keyboardType:
@@ -316,7 +316,7 @@ class _AccountCreationViewState extends State<AccountCreationView> {
                                     gapH8,
                                     TextFormField(
                                       obscureText: true,
-                                      decoration: InputDecoration(
+                                      decoration:const  InputDecoration(
                                         hintText: '**********',
                                       ),
                                       keyboardType:
@@ -426,7 +426,7 @@ class _AccountCreationViewState extends State<AccountCreationView> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               gapH24,
-                              TopIndicator(
+                              const    TopIndicator(
                                   isProfileView: false,
                                   isPinView: true,
                                   isVerificationView: false),
@@ -545,7 +545,7 @@ class _AccountCreationViewState extends State<AccountCreationView> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               gapH24,
-                              TopIndicator(
+                              const   TopIndicator(
                                   isProfileView: false,
                                   isPinView: false,
                                   isVerificationView: true),
@@ -691,7 +691,7 @@ class _AccountCreationViewState extends State<AccountCreationView> {
 /// StatelessWidget [CheckPasswordWidget]
 class CheckPasswordWidget extends StatelessWidget {
   /// Creates instance of [CheckPasswordWidget]
-  CheckPasswordWidget(
+    CheckPasswordWidget(
       {Key? key,
       required this.hasNumber,
       required this.hasSpecialChar,
@@ -704,13 +704,14 @@ class CheckPasswordWidget extends StatelessWidget {
   final bool hasSpecialChar;
 
   /// Styling
-  final styleForText = TextStyle(fontSize: 10, color: AppColors.primary);
 
   @override
   Widget build(BuildContext context) {
+    const styleForText = TextStyle(fontSize: 10, color: AppColors.primary);
+
     return Wrap(
       children: [
-        Text(
+        const Text(
           'Use:',
           style: styleForText,
         ),
@@ -720,7 +721,7 @@ class CheckPasswordWidget extends StatelessWidget {
               SvgPicture.asset(
                   rightLenght ? AppAssets.check_good : AppAssets.check_wrong),
               gapW4,
-              Text('8-20 characters', style: styleForText),
+           const   Text('8-20 characters', style: styleForText),
             ],
           ),
         ),
@@ -732,7 +733,7 @@ class CheckPasswordWidget extends StatelessWidget {
                   ? AppAssets.check_good
                   : AppAssets.check_wrong),
               gapW4,
-              Text('Upper & Lowercase', style: styleForText),
+            const  Text('Upper & Lowercase', style: styleForText),
             ],
           ),
         ),
@@ -743,7 +744,7 @@ class CheckPasswordWidget extends StatelessWidget {
               SvgPicture.asset(
                   hasNumber ? AppAssets.check_good : AppAssets.check_wrong),
               gapW4,
-              Text('Number (s)', style: styleForText),
+            const  Text('Number (s)', style: styleForText),
             ],
           ),
         ),
@@ -755,7 +756,7 @@ class CheckPasswordWidget extends StatelessWidget {
                   ? AppAssets.check_good
                   : AppAssets.check_wrong),
               gapW4,
-              Text('Special Characters', style: styleForText),
+            const  Text('Special Characters', style: styleForText),
             ],
           ),
         )

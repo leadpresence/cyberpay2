@@ -1,13 +1,13 @@
-import 'package:cyberpay_mobile_2/core/configs/routes/route_paths.dart';
+import 'package:cyberpay_mobile_2/common/configs/routes/route_paths.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../core/configs/styles/app_assests.dart';
-import '../../core/configs/styles/app_colors.dart';
-import '../../core/configs/styles/app_sizes.dart';
-import '../../core/widgets/CustomExpandableCard.dart';
+import '../../common/configs/styles/app_assests.dart';
+import '../../common/configs/styles/app_colors.dart';
+import '../../common/configs/styles/app_sizes.dart';
+import '../../common/widgets/CustomExpandableCard.dart';
 
 /// PayUtilityBills
 class PayUtilityBills extends StatefulWidget {
@@ -27,7 +27,7 @@ class _PayUtilityBillsState extends State<PayUtilityBills> {
           centerTitle: true,
           leading: InkWell(
               onTap: () => Navigator.pop(context),
-              child: Icon(
+              child:const  Icon(
                 CupertinoIcons.back,
                 color: AppColors.primary,
                 size: 40,
@@ -40,7 +40,7 @@ class _PayUtilityBillsState extends State<PayUtilityBills> {
                   toolbarHeight: kToolbarHeight,
                   automaticallyImplyLeading: false,
                   flexibleSpace: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 18.0),
+                    margin:const  EdgeInsets.symmetric(horizontal: 18.0),
                     child: Text(
                       'Pay Utilities',
                       style: Theme.of(context).textTheme.headline5?.copyWith(
@@ -50,9 +50,9 @@ class _PayUtilityBillsState extends State<PayUtilityBills> {
               SliverToBoxAdapter(
                   child: Container(
                 height: screenSize(context).width * 0.20,
-                padding: EdgeInsets.only(left: 25, right: 25),
+                padding:const  EdgeInsets.only(left: 25, right: 25),
                 width: screenSize(context).width,
-                decoration: BoxDecoration(
+                decoration:const  BoxDecoration(
                     color: Colors.grey,
                     image: DecorationImage(
                         fit: BoxFit.cover,
@@ -73,7 +73,7 @@ class _PayUtilityBillsState extends State<PayUtilityBills> {
                           fillColor: AppColors.white,
                           hintText: 'Search',
                           prefix: Container(
-                            margin: EdgeInsets.only(left: 6, right: 6),
+                            margin:const  EdgeInsets.only(left: 6, right: 6),
                             child: SvgPicture.asset(
                               AppAssets.search,
                               color: AppColors.primary,
@@ -93,10 +93,10 @@ class _PayUtilityBillsState extends State<PayUtilityBills> {
 
               /// BODY ---->
               ///
-              SliverToBoxAdapter(child: gapH16),
+              const  SliverToBoxAdapter(child: gapH16),
               SliverToBoxAdapter(
                 child: Container(
-                  margin: EdgeInsets.symmetric(horizontal: 18),
+                  margin:const  EdgeInsets.symmetric(horizontal: 18),
                   child: Column(
                     children: [
                       PlanCard(
@@ -109,7 +109,7 @@ class _PayUtilityBillsState extends State<PayUtilityBills> {
                             child: Container(
                               height: screenSize(context).height * 0.15,
                               width: screenSize(context).width,
-                              padding: EdgeInsets.only(
+                              padding:const  EdgeInsets.only(
                                   left: 16, right: 16, top: 4, bottom: 4),
                               decoration:
                               BoxDecoration(color: AppColors.ligthBlue),
@@ -121,24 +121,24 @@ class _PayUtilityBillsState extends State<PayUtilityBills> {
                                       context.pushNamed(AppRoute.electricityBillsPayment.name);
 
                                     },
-                                      child: ProvidersCircleAirtimeData(color: AppColors.red,iconPath: AppAssets.ikeja,)),
+                                      child: const ProvidersCircleAirtimeData(color: AppColors.red,iconPath: AppAssets.ikeja,)),
                                   GestureDetector(
                                       onTap:(){
                                         context.pushNamed(AppRoute.electricityBillsPayment.name);
                                       },
 
-                                      child: ProvidersCircleAirtimeData(color: AppColors.darkYellow,iconPath: AppAssets.ibadan,)),
+                                      child:const  ProvidersCircleAirtimeData(color: AppColors.darkYellow,iconPath: AppAssets.ibadan,)),
                                   GestureDetector(
                                       onTap:(){
                                         context.pushNamed(AppRoute.electricityBillsPayment.name);
                                       },
-                                      child: ProvidersCircleAirtimeData(color: AppColors.primary,iconPath: AppAssets.enugu,)),
+                                      child:const  ProvidersCircleAirtimeData(color: AppColors.primary,iconPath: AppAssets.enugu,)),
                                   GestureDetector(
                                       onTap:(){},
-                                      child: ProvidersCircleAirtimeData(color: AppColors.dark_blue,iconPath: AppAssets.eko,)),
+                                      child:const  ProvidersCircleAirtimeData(color: AppColors.dark_blue,iconPath: AppAssets.eko,)),
                                 GestureDetector(
                                       onTap:(){},
-                                      child: ProvidersCircleAirtimeData(color: AppColors.midBlue,iconPath: AppAssets.jos,)),
+                                      child:const  ProvidersCircleAirtimeData(color: AppColors.midBlue,iconPath: AppAssets.jos,)),
                                 ],
                               ),
                             ),
@@ -158,7 +158,7 @@ class _PayUtilityBillsState extends State<PayUtilityBills> {
                             child: Container(
                               height: screenSize(context).height * 0.15,
                               width: screenSize(context).width,
-                              padding: EdgeInsets.only(
+                              padding:const  EdgeInsets.only(
                                   left: 16, right: 16, top: 4, bottom: 4),
                               decoration:
                                   BoxDecoration(color: AppColors.ligthBlue),
@@ -169,24 +169,24 @@ class _PayUtilityBillsState extends State<PayUtilityBills> {
                                       onTap:(){
                                         context.pushNamed(AppRoute.cableBillsPayment.name);
                                       },
-                                      child: ProvidersCircleAirtimeData(color: AppColors.darkred,iconPath: AppAssets.iroktv,)),
+                                      child:const  ProvidersCircleAirtimeData(color: AppColors.darkred,iconPath: AppAssets.iroktv,)),
                                   GestureDetector(
                                       onTap:(){
                                         context.pushNamed(AppRoute.cableBillsPayment.name);
 
                                       },
 
-                                      child: ProvidersCircleAirtimeData(color: AppColors.midBlue,iconPath: AppAssets.startimes,)),
+                                      child:const  ProvidersCircleAirtimeData(color: AppColors.midBlue,iconPath: AppAssets.startimes,)),
                                   GestureDetector(
                                       onTap:(){
                                         context.pushNamed(AppRoute.cableBillsPayment.name);
 
                                       },
-                                      child: ProvidersCircleAirtimeData(color: AppColors.green,iconPath: AppAssets.gotv,)),
+                                      child:const  ProvidersCircleAirtimeData(color: AppColors.green,iconPath: AppAssets.gotv,)),
                                   GestureDetector(
                                       onTap:()=>                 context.pushNamed(AppRoute.cableBillsPayment.name),
 
-                                      child: ProvidersCircleAirtimeData(color: AppColors.primary,iconPath: AppAssets.dstv,)),
+                                      child:const  ProvidersCircleAirtimeData(color: AppColors.primary,iconPath: AppAssets.dstv,)),
                                 ],
                               )
                             ),
@@ -205,7 +205,7 @@ class _PayUtilityBillsState extends State<PayUtilityBills> {
                             child: Container(
                               height: screenSize(context).height * 0.15,
                               width: screenSize(context).width,
-                              padding: EdgeInsets.only(
+                              padding:const  EdgeInsets.only(
                                   left: 16, right: 16, top: 4, bottom: 4),
                               decoration:
                                   BoxDecoration(color: AppColors.ligthBlue),
@@ -216,12 +216,12 @@ class _PayUtilityBillsState extends State<PayUtilityBills> {
                                       onTap:(){
                                         context.pushNamed(AppRoute.internetServicesBillsPayment.name);
                                       },
-                                      child: ProvidersCircleAirtimeData(color: AppColors.green,iconPath: AppAssets.smile,)),
+                                      child:const  ProvidersCircleAirtimeData(color: AppColors.green,iconPath: AppAssets.smile,)),
                                   gapW8,
                                   GestureDetector(
                                       onTap:(){},
 
-                                      child: ProvidersCircleAirtimeData(color: AppColors.primary,iconPath: AppAssets.cyberSpace,)),
+                                      child:const  ProvidersCircleAirtimeData(color: AppColors.primary,iconPath: AppAssets.cyberSpace,)),
                                 ],
                               )
                             ),
@@ -240,17 +240,17 @@ class _PayUtilityBillsState extends State<PayUtilityBills> {
                             child: Container(
                               height: screenSize(context).height * 0.15,
                               width: screenSize(context).width,
-                              padding: EdgeInsets.only(
+                              padding:const  EdgeInsets.only(
                                   left: 16, right: 16, top: 4, bottom: 4),
                               decoration:
-                                  BoxDecoration(color: AppColors.ligthBlue),
+                              const  BoxDecoration(color: AppColors.ligthBlue),
                               child: Row(
                                 children: [
                                   GestureDetector(
                                       onTap:(){
                                         context.pushNamed(AppRoute.lccServicesBillsPayment.name);
                                       },
-                                      child: ProvidersCircleAirtimeData(color: AppColors.lightBrown,iconPath: AppAssets.lcc,)),
+                                      child:const  ProvidersCircleAirtimeData(color: AppColors.lightBrown,iconPath: AppAssets.lcc,)),
                                ],
                               )
                             ),
@@ -283,12 +283,12 @@ class ProvidersCircleAirtimeData extends StatelessWidget {
       height: 60,
       width: 60,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(50)),
+          borderRadius:const  BorderRadius.all(Radius.circular(50)),
           color: color ?? AppColors.red),
       child: Container(
           height: 35,
           width: 35,
-          decoration: BoxDecoration(
+          decoration:const  BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(50)),
               color: Colors.white),
           child:Center(child: Image.asset(iconPath??'')),),

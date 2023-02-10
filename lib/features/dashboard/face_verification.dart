@@ -1,14 +1,14 @@
-import 'package:cyberpay_mobile_2/core/configs/routes/route_paths.dart';
-import 'package:cyberpay_mobile_2/core/widgets/primary_button.dart';
+import 'package:cyberpay_mobile_2/common/configs/routes/route_paths.dart';
+import 'package:cyberpay_mobile_2/common/widgets/primary_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive/hive.dart';
-import '../../core/configs/styles/app_assests.dart';
-import '../../core/configs/styles/app_colors.dart';
-import '../../core/configs/styles/app_sizes.dart';
-import '../../core/widgets/order_and_undered_list.dart';
+import '../../common/configs/styles/app_assests.dart';
+import '../../common/configs/styles/app_colors.dart';
+import '../../common/configs/styles/app_sizes.dart';
+import '../../common/widgets/order_and_undered_list.dart';
 
 /// FaceVerification
 class FaceVerification extends StatefulWidget {
@@ -41,24 +41,26 @@ class _FaceVerificationState extends State<FaceVerification> {
       body: SafeArea(
           child: CustomScrollView(slivers: [
         SliverAppBar(
-          leading: Icon(
-            CupertinoIcons.back,
-            color: AppColors.primary,
-            size: 40,
+          leading: InkWell(
+            onTap: ()=>Navigator.pop(context),
+            child:const Icon(
+              CupertinoIcons.back,
+              color: AppColors.primary,
+              size: 40,
+            ),
           ),
         ),
         SliverToBoxAdapter(
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 15, horizontal: 18),
+            padding:const EdgeInsets.symmetric(vertical: 15, horizontal: 18),
             child: SizedBox(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   SvgPicture.asset(AppAssets.profile),
                   gapW4,
                   Column(
                     children: [
-                      Text('FACE VERIFICATION'),
+                      const  Text('FACE VERIFICATION'),
                       gapH4,
                       Container(
                         height: 2,
@@ -76,7 +78,7 @@ class _FaceVerificationState extends State<FaceVerification> {
                   SvgPicture.asset(AppAssets.bvn),
                   gapW4,
                   Column(
-                    children: [
+                    children: const [
                       Text('BVN'),
                     ],
                   ),
@@ -85,22 +87,22 @@ class _FaceVerificationState extends State<FaceVerification> {
             ),
           ),
         ),
-        SliverToBoxAdapter(
+            const   SliverToBoxAdapter(
           child: gapH16,
         ),
         SliverToBoxAdapter(
           child: Container(
             width: screenSize(context).width,
             height: screenSize(context).height * 0.55,
-            padding: EdgeInsets.symmetric(vertical: 15, horizontal: 18),
-            margin: EdgeInsets.symmetric(horizontal: 18),
+            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 18),
+            margin:const EdgeInsets.symmetric(horizontal: 18),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
                   spreadRadius: 0,
-                  offset: Offset(2, 12),
+                  offset:const Offset(2, 12),
                   color: Colors.blue.withOpacity(0.3),
                   blurRadius: 20,
                 ),
@@ -109,7 +111,7 @@ class _FaceVerificationState extends State<FaceVerification> {
             child: Column(children: [
               SvgPicture.asset(AppAssets.user_focus),
               Wrap(
-                children: [
+                children: const [
                   Text(
                       'We’ll need you to take a portrait selfie to verify your identity.'),
                 ],
@@ -145,7 +147,7 @@ class _FaceVerificationState extends State<FaceVerification> {
             SliverToBoxAdapter(
               child:
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 25, horizontal: 18),
+                padding:const EdgeInsets.symmetric(vertical: 25, horizontal: 18),
                 child: PrimaryButton(
                   onPressed: isImageSetToEnableButton() ? null : () {},
                 text: 'NEXT',

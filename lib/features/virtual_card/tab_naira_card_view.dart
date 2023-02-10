@@ -15,7 +15,7 @@ class TabNairaCard extends StatefulWidget {
 class _TabNairaCardState extends State<TabNairaCard> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: EmptyAddCardView(),
     );
   }
