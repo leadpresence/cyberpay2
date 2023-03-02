@@ -7,6 +7,7 @@ class SharedPrefKeys {
   static const String isBalanceHidden = 'isBalanceHidden';
 
   /// Key used to access if user is logged in
+  ///     /// Bool returns true if user has loggedIn
   static const String isLoggedIn = 'IsLoggedIn';
 
   /// Phone number key

@@ -1,4 +1,4 @@
-abstract class StorageService {
+abstract class  StorageService {
   /// Initializes service
   Future<void> init();
 

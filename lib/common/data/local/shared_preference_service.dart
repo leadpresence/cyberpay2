@@ -45,6 +45,11 @@ extension  SharePreferenceService on SharedPreferences{
       _saveToPreferences(SharedPrefKeys.phoneNumber, phoneNumber);
     }
   }
+
+  /// Bool save if user is logged in
+  void saveUserIsLoggedIn({required bool loggedInValue}){
+      _saveToPreferences(SharedPrefKeys.isLoggedIn, loggedInValue);
+  }
   /// Get User Phone Number
   String get phoneNumber{
     final userPhoneNumber = _getFromDisk(SharedPrefKeys.phoneNumber);
@@ -53,7 +58,18 @@ extension  SharePreferenceService on SharedPreferences{
     }
 
     return '';
+
   }
+  bool get isLoggedInValue{
+    final loggedIn = _getFromDisk(SharedPrefKeys.isLoggedIn);
+    if(loggedIn !=null ){
+       return loggedIn;
+    }
+
+    return false;
+  }
+
+
 
 
 

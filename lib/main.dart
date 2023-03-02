@@ -3,25 +3,30 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'common/data/local/hive_storage_service.dart';
+import 'common/data/local/shared_preference_service.dart';
 import 'common/data/local/storage_service.dart';
 import 'common/data/local/storage_service_provider.dart';
 import 'cyberpay_mobile.dart';
 
 void main() async {
-  // runApp(const MyApp());
   await runZonedGuarded<Future<void>>(
         () async {
-      // Hive-specific initialization
+      // Storage -specific initialization
       await Hive.initFlutter();
       final StorageService initializedStorageService = HiveStorageService();
+      final sharedPreferences = await SharedPreferences.getInstance();
+
       await initializedStorageService.init();
 
       runApp(
         ProviderScope(
           overrides: [
             storageServiceProvider.overrideWithValue(initializedStorageService),
+            sharedPreferencesServiceProvider
+                .overrideWithValue(sharedPreferences),
           ],
           child:   CyberPayApp(),
         ),
