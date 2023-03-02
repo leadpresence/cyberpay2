@@ -18,8 +18,7 @@ import 'login_controller.dart';
 ///
 class LoginWithPhone extends ConsumerStatefulWidget {
   ///
-  LoginWithPhone({Key? key, required this.ref}) : super(key: key);
-  final Ref ref;
+  LoginWithPhone({Key? key}) : super(key: key);
 
   @override
   ConsumerState<LoginWithPhone> createState() => _LoginWithPhoneState();
@@ -32,8 +31,11 @@ class _LoginWithPhoneState extends ConsumerState<LoginWithPhone> {
 
   @override
   Widget build(BuildContext context) {
-    final controller =
-        widget.ref.watch(loginControllerProvider.notifier);
+
+    final loginController =
+        ref.read(loginControllerProvider);
+    final loginControllerNotifier =
+       ref.watch(loginControllerProvider.notifier);
 
     return SingleChildScrollView(
       child: Form(
@@ -156,15 +158,19 @@ class _LoginWithPhoneState extends ConsumerState<LoginWithPhone> {
             gapH48,
             PrimaryButton(
               buttonColor: AppColors.primary,
+              isLoading : loginController.submitValue.isLoading,
               text: 'SIGN IN',
               onPressed: () {
                 if (withPhoneKey.currentState!.validate()) {
-                  controller.login(
+                  loginControllerNotifier.login(
                     LoginRequest(
                       mobileNumber: loginPhoneNumberController.text.toString(),
                       password: loginPasswordController.text.toString(),
                     ),
                   );
+                }
+                if(loginController.value!=null){
+                  context.pushReplacementNamed(AppRoute.dashboardHome.name);
                 }
               },
             ),
@@ -192,9 +198,9 @@ class _LoginWithPhoneState extends ConsumerState<LoginWithPhone> {
                       ),
                   children: <TextSpan>[
                     TextSpan(
-                      text: 'Sign up',
+                      text: ' Sign up',
                       style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                            fontWeight: FontWeight.normal,
+                            fontWeight: FontWeight.bold,
                             color: AppColors.red,
                           ),
                       recognizer: TapGestureRecognizer()

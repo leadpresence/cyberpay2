@@ -37,6 +37,22 @@ final phoneRegExp = RegExp(r'^\+?0[0-9]{10}$');
 
 }
 
+/// hideNumberPart
+String hideNumberPart(String number) {
+  const marsk = '**** ***';
+  String newNumber = '';
+  if (number.length == 11) {
+    newNumber = number.replaceRange(7, 11, marsk);
+  } else if(number.length>13){
+    newNumber = number.replaceRange(7, 11, marsk);
+  }
+  else {
+    newNumber = number;
+  }
+
+  return newNumber;
+}
+
 
 ///  isEmptyOrNull
 bool isEmptyOrNull(String? value) {

@@ -1,7 +1,9 @@
 import 'package:cyberpay_mobile_2/common/data/models/api/verify_otp_request.dart';
 import 'package:cyberpay_mobile_2/features/sign_up/sign_up_screen_state.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/animation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter/material.dart';
 
 import '../../common/data/models/api/new_customer_wallet_request.dart';
 import '../../common/data/models/api/new_customer_wallet_response.dart';
@@ -17,8 +19,11 @@ class CreateCustomerController extends StateNotifier<SignUpScreenState> {
   /// and the life-cycles of the application.
   Ref ref;
 
+
   /// CreateCustomerController Constructor
   CreateCustomerController(this.ref) : super(SignUpScreenState());
+
+
 
   ///A  Future method to createNewCustomer
   Future<NewCustomerWalletResponse> createNewCustomer(
@@ -28,13 +33,14 @@ class CreateCustomerController extends StateNotifier<SignUpScreenState> {
 
     /// Todo Add Hive to save user submitted data
     try {
-      state = state.copyWith(submitValue: const AsyncLoading());
+      state = state.copyWith(verifyOtpValue: const AsyncLoading());
       final res = await repo.createNewCustomer(request);
       if (mounted) {
         state = state.copyWith(
           submitValue: const AsyncData(null),
-          verifyOtpValue: const AsyncLoading(),
+          verifyOtpValue:   const AsyncData(null),
           otpVerified: false,
+          stage: NewCustomerStage.verifyOtp,
         );
         state = state.copyWith(value: AsyncData(res));
       }
@@ -95,6 +101,7 @@ class CreateCustomerController extends StateNotifier<SignUpScreenState> {
           submitValue: const AsyncData(null),
           verifyOtpValue: const AsyncData(null),
           otpVerified: false,
+
         );
       }
 
@@ -113,6 +120,8 @@ class CreateCustomerController extends StateNotifier<SignUpScreenState> {
       data: null,
     );
   }
+
+
 
 
 }

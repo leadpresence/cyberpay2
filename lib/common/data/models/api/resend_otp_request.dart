@@ -13,7 +13,7 @@ String resendOtpRequestToJson(ResendOtpRequest data) =>
     json.encode(data.toJson());
 
 class ResendOtpRequest {
-  ResendOtpRequest({
+    ResendOtpRequest({
     required this.mobileNo,
     required this.countryCode,
   });

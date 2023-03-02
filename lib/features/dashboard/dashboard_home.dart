@@ -54,7 +54,7 @@ class _DashboardHomeState extends State<DashboardHome> {
                     borderRadius: const BorderRadius.all(Radius.circular(15)),
                   splashColor: AppColors.primary.withOpacity(0.3),
                   onTap: ()=>context.pushNamed(AppRoute.profileView.name),
-                    child: SvgPicture.asset(AppAssets.settings)),
+                    child: SvgPicture.asset(AppAssets.settings),),
                 InkWell(
                   borderRadius: const BorderRadius.all(Radius.circular(15)),
                   splashColor: AppColors.primary.withOpacity(0.3),
@@ -69,8 +69,8 @@ class _DashboardHomeState extends State<DashboardHome> {
               title: Container(
                 margin: const EdgeInsets.only(bottom: 20, top: 10),
                 height: 30,
-                child: Center(child: SvgPicture.asset(AppAssets.cyberpayLogo)),
-              )),
+                child: Center(child: SvgPicture.asset(AppAssets.cyberpayLogo),),
+              ),),
           SliverToBoxAdapter(
               child: Container(
             height: 80,
@@ -85,7 +85,7 @@ class _DashboardHomeState extends State<DashboardHome> {
                   AppColors.primary,
                   AppColors.primary,
                   AppColors.primary,
-                  AppColors.primary
+                  AppColors.primary,
                 ],
                 begin: Alignment.bottomCenter,
                 end: Alignment.topCenter,
@@ -110,7 +110,7 @@ class _DashboardHomeState extends State<DashboardHome> {
                           AppAssets.search,
                           color: AppColors.primary,
                         ),
-                      )),
+                      ),),
                   onChanged: (String? value) {
                     setState(() {});
                   },
@@ -121,7 +121,7 @@ class _DashboardHomeState extends State<DashboardHome> {
                 ),
               ),
             ),
-          )),
+          ),),
           const SliverToBoxAdapter(child: gapH12),
           SliverToBoxAdapter(
             child: Container(
@@ -132,8 +132,8 @@ class _DashboardHomeState extends State<DashboardHome> {
                 decoration: const BoxDecoration(
                     image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage(AppAssets.wallet_bg)),
-                    borderRadius: BorderRadius.all(Radius.circular(8))),
+                        image: AssetImage(AppAssets.wallet_bg,),),
+                    borderRadius: BorderRadius.all(Radius.circular(8),),),
                 child: Container(
                   padding: const EdgeInsets.all(8),
                   child: Column(
@@ -145,7 +145,7 @@ class _DashboardHomeState extends State<DashboardHome> {
                               .titleMedium
                               ?.copyWith(
                                   color: AppColors.white,
-                                  fontWeight: FontWeight.w800)),
+                                  fontWeight: FontWeight.w800,),),
                       gapH8,
                     SizedBox(
                       width: screenSize(context).width*0.3,
@@ -156,7 +156,7 @@ class _DashboardHomeState extends State<DashboardHome> {
                                 .textTheme
                                 .headlineLarge
                                 ?.copyWith(color: AppColors.white,
-                                fontWeight: FontWeight.w800)),
+                                fontWeight: FontWeight.w800,),),
                             Text('0.00',
                               textAlign: TextAlign.center,
                               maxLines: 1,
@@ -166,7 +166,7 @@ class _DashboardHomeState extends State<DashboardHome> {
                                   .headlineLarge
                                   ?.copyWith(
                                       color: AppColors.white,
-                                      fontWeight: FontWeight.w800))],
+                                      fontWeight: FontWeight.w800,),),],
                         ),
                     ),
                       gapH8,
@@ -220,7 +220,7 @@ class _DashboardHomeState extends State<DashboardHome> {
                                       .titleSmall
                                       ?.copyWith(
                                           color: AppColors.black,
-                                          fontWeight: FontWeight.bold),
+                                          fontWeight: FontWeight.bold,),
                                 ),
                               ),
                             ),
@@ -229,7 +229,7 @@ class _DashboardHomeState extends State<DashboardHome> {
                       ),
                     ],
                   ),
-                )),
+                ),),
           ),
          const SliverToBoxAdapter(child: gapH8),
           SliverToBoxAdapter(
@@ -253,38 +253,38 @@ class _DashboardHomeState extends State<DashboardHome> {
               leading: CircularPercentIndicator(
                 radius: 28.0,
                 lineWidth: 4.0,
-                percent: 0.70,
-                center:const  Text('70%'),
+                percent: 0.7,
+                center:const  Text('30%'),
                 progressColor: AppColors.green,
                 animation: true,
               ),
               title: Text('Complete Profile',
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: AppColors.black, fontWeight: FontWeight.w800)),
+                      color: AppColors.black, fontWeight: FontWeight.w800,),),
               trailing: InkWell(
                   onTap: () {
                     context.pushNamed(AppRoute.faceVerificationView.name);
                   },
-                  child: SvgPicture.asset(AppAssets.chevron_right)),
+                  child: SvgPicture.asset(AppAssets.chevron_right),),
               subtitle: const Text(
                 'Verify your details to allow you receive & send money',
                 overflow: TextOverflow.ellipsis,
               ),
             ),
-          )),
+          ),),
           const    SliverToBoxAdapter(child: gapH24),
           SliverToBoxAdapter(
               child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 18),
             child: SizedBox(
-              height: 230,
+              height: screenSize(context).height * 0.28,
               width: screenSize(context).width,
               child: GridView.count(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 crossAxisSpacing: 10,
                 mainAxisSpacing: 10,
                 crossAxisCount: 3,
-                childAspectRatio: itemHeight / itemWidth,
+                childAspectRatio: 1,
                 shrinkWrap: false,
                 children: List.generate(6, (index) {
                   return GestureDetector(
@@ -308,7 +308,6 @@ class _DashboardHomeState extends State<DashboardHome> {
                         /// gaming
                         // context.pushNamed(AppRoute.gaming.name);
                       }
-
                     },
                     child: GridItemContainer(
                       imagePath: dashboardImageList[index],
@@ -319,7 +318,7 @@ class _DashboardHomeState extends State<DashboardHome> {
                 }),
               ),
             ),
-          )),
+          ),),
         ],
       ),
     );
@@ -350,7 +349,7 @@ class GridItemContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding:const  EdgeInsets.all(12),
-      height: 100,
+      height: screenSize(context).height * 1.5,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: Colors.white,
@@ -373,9 +372,9 @@ class GridItemContainer extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .titleSmall
-                  ?.copyWith(color: Colors.black, fontWeight: FontWeight.w800)
+                  ?.copyWith(color: Colors.black, fontWeight: FontWeight.w800,),
               // style: TextStyle(fontWeight: FontWeight.bold, fontSize: 10),
-              )
+              ),
         ],
       ),
     );

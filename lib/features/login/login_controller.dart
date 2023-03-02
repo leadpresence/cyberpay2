@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../common/data/local/shared_preference_service.dart';
 import '../../common/data/models/api/login_request.dart';
 import '../../common/data/models/api/login_response.dart';
 import '../../common/data/repositories/auth/authRepositoryImpl.dart';
@@ -20,14 +21,19 @@ class LoginController extends StateNotifier<LoginState> {
   /// Login user
   Future<LoginResponse?> login(LoginRequest loginRequest) async {
     final repo = ref.read(authRepositoryImplProvider);
+    final sharedPref = ref.read(sharedPreferencesServiceProvider);
     try {
       state = state.copyWith(submitValue: const AsyncLoading());
       final res = await repo.login(loginRequest);
       if (mounted) {
         state = state.copyWith(
           submitValue: const AsyncData(null),
+            value:  AsyncData(res),
         );
       }
+      sharedPref.saveUserIsLoggedIn(loggedInValue: true);
+
+      state = state.copyWith(value:  AsyncData(res));
 
       return res;
     } on DioError catch (err, stackTraceMsg) {

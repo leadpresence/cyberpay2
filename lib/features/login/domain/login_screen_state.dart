@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 ///
 class LoginState {
   /// AsyncValue of login response
-  final AsyncValue<LoginResponse?> value;
+  final AsyncValue<LoginResponse?>  value;
 
   /// return if is loading
   bool get isLoading => value.isLoading;

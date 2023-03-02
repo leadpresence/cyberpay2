@@ -125,7 +125,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
                         physics: NeverScrollableScrollPhysics(),
                         children: [
                           LoginWithEmail(key: emailViewKey,),
-                          LoginWithPhone(ref:controller.ref ,key: phoneViewKey,),
+                          LoginWithPhone(key: phoneViewKey,),
                         ],
                       ),
                     ),

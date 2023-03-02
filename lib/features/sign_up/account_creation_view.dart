@@ -17,6 +17,7 @@ import 'package:go_router/go_router.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import '../../common/configs/styles/app_assests.dart';
 import '../../common/configs/styles/app_sizes.dart';
+import '../../common/widgets/count_down.dart';
 import '../../common/widgets/custom_text_field.dart';
 import '../../common/widgets/primary_button.dart';
 import '../../common/widgets/top_indicator.dart';
@@ -34,7 +35,8 @@ class AccountCreationView extends ConsumerStatefulWidget {
       _AccountCreationViewState();
 }
 
-class _AccountCreationViewState extends ConsumerState<AccountCreationView> {
+class _AccountCreationViewState extends ConsumerState<AccountCreationView>
+    with SingleTickerProviderStateMixin {
   /// Keys
   final _createAccountPageController = PageController();
   final GlobalKey<FormState> _personalDetailsFormKey = GlobalKey<FormState>();
@@ -60,16 +62,36 @@ class _AccountCreationViewState extends ConsumerState<AccountCreationView> {
   /// Pin & otp Controllers
   TextEditingController pinTextEditingController = TextEditingController();
   TextEditingController otpTextEditingController = TextEditingController();
-@override
-void dispose() {
-  firstNameController.dispose();
-  lastNameController.dispose();
-  emailController.dispose();
-  phoneNumberController.dispose();
-  passwordController.dispose();
-  confirmPasswordController.dispose();
-  super.dispose();
-}
+
+  /// timer Controller
+  late AnimationController animationController;
+  late Animation<Color?> _Tween;
+
+  void startTimer() {
+    animationController.forward();
+  }
+
+  @override
+  void initState() {
+    animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(minutes: 1),
+      upperBound: 1.0,
+    );
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    firstNameController.dispose();
+    lastNameController.dispose();
+    emailController.dispose();
+    phoneNumberController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+    super.dispose();
+  }
+
   bool hasError = false;
   bool isPasswordValid = false;
   String currentText = '';
@@ -82,7 +104,9 @@ void dispose() {
       onError: (error, stackTrace) => debugPrint('An error occurred $error'),
     );
 
-    final controller = ref.watch(createCustomerControllerProvider.notifier);
+    final createNewCustomerState = ref.watch(createCustomerControllerProvider);
+    final createNewCustomerStateNotifier =
+        ref.watch(createCustomerControllerProvider.notifier);
 
     return Scaffold(
       resizeToAvoidBottomInset: true,
@@ -157,7 +181,8 @@ void dispose() {
                                               color: AppColors.primary,
                                             ),
                                         recognizer: TapGestureRecognizer()
-                                          ..onTap = ()=>context.pushNamed(AppRoute.loginView.name),
+                                          ..onTap = () => context.pushNamed(
+                                              AppRoute.loginView.name),
                                       ),
                                     ],
                                   ),
@@ -190,7 +215,6 @@ void dispose() {
                   children: [
                     /// First account creation View
                     SingleChildScrollView(
-
                       padding: const EdgeInsets.symmetric(
                         horizontal: 4,
                         vertical: 12,
@@ -255,7 +279,7 @@ void dispose() {
                             gapH12,
                             CustomTextField(
                               title: 'Password',
-                              inputType: TextInputType.phone,
+                              inputType: TextInputType.visiblePassword,
                               controller: passwordController,
                               isPassword: true,
                               validator: (value) {
@@ -267,14 +291,11 @@ void dispose() {
                             gapH12,
                             CustomTextField(
                               title: 'Confirm Password',
-                              inputType: TextInputType.phone,
+                              inputType: TextInputType.visiblePassword,
                               controller: confirmPasswordController,
                               isPassword: true,
                               validator: (value) {
                                 if (!value.toString().isValidPassword) {
-                                  setState(() {
-                                    isPasswordValid = true;
-                                  });
                                   return 'Enter valid password';
                                 } else if (value !=
                                     passwordController.text.toString()) {
@@ -295,10 +316,11 @@ void dispose() {
                                 Material(
                                   child: Checkbox(
                                     activeColor: AppColors.primary,
-                                    value: controller.state.agreedToTerms,
+                                    value: createNewCustomerState.agreedToTerms,
                                     onChanged: (value) {
                                       setState(() {
-                                        controller.state.agreedToTerms = value!;
+                                        createNewCustomerState.agreedToTerms =
+                                            value!;
                                       });
                                     },
                                   ),
@@ -355,12 +377,11 @@ void dispose() {
                                 ///go to the next page{
                                 if (_personalDetailsFormKey.currentState!
                                     .validate()) {
-                                  if (controller.state.agreedToTerms) {
-                                    _createAccountPageController?.nextPage(
-                                      duration:
-                                          const Duration(milliseconds: 500),
-                                      curve: Curves.ease,
-                                    );
+                                  if (createNewCustomerState.agreedToTerms) {
+                                _createAccountPageController?.nextPage(
+                                  duration: const Duration(milliseconds: 500),
+                                  curve: Curves.ease,
+                                );
                                   } else {
                                     const snackBar = SnackBar(
                                       content: Text(
@@ -493,42 +514,47 @@ void dispose() {
                             PrimaryButton(
                               buttonColor: AppColors.primary,
                               text: 'NEXT',
-                              isLoading: controller.state.submitValue.isLoading,
-                              onPressed: () {
-                                setState(() {
-                                  controller.state.stage =
-                                      NewCustomerStage.setPin;
-                                });
+                              isLoading:
+                                  createNewCustomerState.submitValue.isLoading,
+                              onPressed: createNewCustomerState
+                                      .submitValue.isLoading
+                                  ? null
+                                  : () {
+                                      setState(() {
+                                        createNewCustomerState.stage =
+                                            NewCustomerStage.setPin;
+                                      });
 
-                                if (pinTextEditingController.text
-                                        .toString()
-                                        .length ==
-                                    6) {
-                                  controller.createNewCustomer(
-                                    NewCustomerWalletRequest(
-                                      mobileNo:
-                                          phoneNumberController.text.toString(),
-                                      //
-                                      firstName:
-                                          firstNameController.text.toString(),
-                                      lastName:
-                                          lastNameController.text.toString(),
-                                      email: emailController.text.toString(),
-                                      password:
-                                          passwordController.text.toString(),
-                                      countryCode: "+234",
-                                      pin: pinTextEditingController.text
-                                          .toString(),
-                                    ),
-                                  );
-                                }
-
-                                /// ToDo move to next screen only when Api returns success
+                                      if (pinTextEditingController.text
+                                              .toString()
+                                              .length ==
+                                          6) {
+                                        createNewCustomerStateNotifier
+                                            .createNewCustomer(
+                                          NewCustomerWalletRequest(
+                                            mobileNo: phoneNumberController.text
+                                                .toString(),
+                                            //
+                                            firstName: firstNameController.text
+                                                .toString(),
+                                            lastName: lastNameController.text
+                                                .toString(),
+                                            email:
+                                                emailController.text.toString(),
+                                            password: passwordController.text
+                                                .toString(),
+                                            countryCode: "+234",
+                                            pin: pinTextEditingController.text
+                                                .toString(),
+                                          ),
+                                        );
+                                      }
                                 _createAccountPageController?.nextPage(
                                   duration: const Duration(milliseconds: 500),
                                   curve: Curves.ease,
                                 );
-                              }, //state.isLoading ? null : _submit,
+                                startTimer();
+                              },
                             ),
                           ],
                         ),
@@ -565,7 +591,8 @@ void dispose() {
                             ),
                             gapH8,
                             Text(
-                              '*******5678',
+                              hideNumberPart(
+                                  phoneNumberController.text.toString()),
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyMedium!
@@ -576,13 +603,13 @@ void dispose() {
                             ),
                             gapH32,
                             PinCodeTextField(
+                              obscureText: true,
                               appContext: context,
                               pastedTextStyle: TextStyle(
                                 color: AppColors.primary.withOpacity(0.6),
                                 fontWeight: FontWeight.bold,
                               ),
                               length: 6,
-                              obscuringCharacter: '*',
                               animationType: AnimationType.fade,
                               validator: (v) {
                                 if (v == null) {
@@ -630,9 +657,6 @@ void dispose() {
                               onCompleted: (v) {
                                 debugPrint('Completed');
                               },
-                              // onTap: () {
-                              //   print("Pressed");
-                              // },
                               onChanged: (value) {
                                 debugPrint(value);
                                 setState(() {
@@ -659,50 +683,43 @@ void dispose() {
                               ),
                             ),
                             gapH16,
-                            GestureDetector(
-                              onTap: () {
-                                ResendOtpRequest(
+                            Countdown(
+                              onPressed: () => {
+                                createNewCustomerStateNotifier.resendUserOtp(
+                                  ResendOtpRequest(
                                     mobileNo:
                                         phoneNumberController.text.toString(),
-                                    countryCode: '+234');
-                              },
-                              child: RichText(
-                                textAlign: TextAlign.center,
-                                text: const TextSpan(
-                                  text: "Didn't get the code? ",
-                                  style: TextStyle(
-                                    color: Colors.black54,
-                                    fontSize: 15,
+                                    countryCode: '+234',
                                   ),
-                                  children: [
-                                    TextSpan(
-                                      text: ' Resend in 60s',
-                                      style: TextStyle(
-                                        color: AppColors.red,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                  ],
                                 ),
+                              },
+                              animation: StepTween(
+                                begin: 60,
+                                end: 0,
+                              ).animate(
+                                animationController,
                               ),
                             ),
+
                             gapH48,
                             PrimaryButton(
                               buttonColor: AppColors.primary,
+                              isLoading: createNewCustomerState
+                                  .verifyOtpValue.isLoading,
                               text: 'NEXT',
-                              isLoading: false,
                               onPressed: () {
-                                controller.verifyOtp(
+                                createNewCustomerStateNotifier.verifyOtp(
                                   VerifyOtpRequest(
-                                      mobileNo:
-                                          phoneNumberController.text.toString(),
-                                      otp: otpTextEditingController.text
-                                          .toString(),),
+                                    mobileNo:
+                                        phoneNumberController.text.toString(),
+                                    otp: otpTextEditingController.text
+                                        .toString(),
+                                  ),
                                 );
-
-                                // context.pushNamed(AppRoute.loginView.name);
-                              }, //state.isLoading ? null : _submit,
+                                if (createNewCustomerState.otpVerified) {
+                                  context.pushNamed(AppRoute.loginView.name);
+                                }
+                              },
                             ),
                           ],
                         ),
@@ -751,7 +768,8 @@ class CheckPasswordWidget extends StatelessWidget {
           child: Wrap(
             children: [
               SvgPicture.asset(
-                  rightLenght ? AppAssets.check_good : AppAssets.check_wrong),
+                rightLenght ? AppAssets.check_good : AppAssets.check_wrong,
+              ),
               gapW4,
               const Text('8-20 characters', style: styleForText),
             ],

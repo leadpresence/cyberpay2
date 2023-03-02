@@ -78,8 +78,7 @@ class _CyberpayOnBoardingState extends State<CyberpayOnBoarding> {
                         buttonColor:AppColors.primary ,
                           onPressed: () {
                             if (headingsTr.length == (currentIndex + 1)) {
-                            // context.pushNamed(AppRoute.loginView.name);
-                              Navigator.pushNamed(context, '/loginView');
+                            context.pushNamed(AppRoute.loginView.name);
                             } else {
                               _pageController?.nextPage(
                                   duration: const Duration(milliseconds: 500),

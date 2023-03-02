@@ -215,7 +215,7 @@ class _LoginWithEmailState extends ConsumerState<LoginWithEmail> {
                             .bodySmall!
                             .copyWith(
                           fontWeight:
-                          FontWeight.normal,
+                          FontWeight.bold,
                           color: AppColors.red,
                         ),
                         recognizer:
