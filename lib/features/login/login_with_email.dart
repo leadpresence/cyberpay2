@@ -1,30 +1,32 @@
+import 'package:cyberpay_mobile_2/features/sign_up/account_creation_view.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:go_router/go_router.dart';
-
-import '../../common/configs/routes/route_paths.dart';
 import '../../common/configs/styles/app_assests.dart';
 import '../../common/configs/styles/app_colors.dart';
 import '../../common/configs/styles/app_sizes.dart';
 import '../../common/widgets/primary_button.dart';
 
-class LoginWithEmail extends StatefulWidget {
+class LoginWithEmail extends ConsumerStatefulWidget {
+  ///
   const LoginWithEmail({Key? key}) : super(key: key);
 
   @override
-  State<LoginWithEmail> createState() => _LoginWithEmailState();
+  ConsumerState<LoginWithEmail> createState() => _LoginWithEmailState();
 }
 
-class _LoginWithEmailState extends State<LoginWithEmail> {
-  final withEmailKey = GlobalKey<FormState>();
+class _LoginWithEmailState extends ConsumerState<LoginWithEmail> {
+  final GlobalKey<FormState> withEmailKey = GlobalKey<FormState>();
+  
 
   @override
   Widget build(BuildContext context) {
+
     return
       SingleChildScrollView(
       child:  Form(
-        key:withEmailKey,
+        key: withEmailKey,
         child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -97,7 +99,7 @@ class _LoginWithEmailState extends State<LoginWithEmail> {
                       FontWeight.bold,
                       color: AppColors.black,
                     ),),
-                  )
+                  ),
                 ],),
               gapH24,
               Row(
@@ -124,7 +126,7 @@ class _LoginWithEmailState extends State<LoginWithEmail> {
                                   fontWeight:
                                   FontWeight.normal,
                                   color: AppColors.black,
-                                ),)
+                                ),),
                               ],
                             ),),
                         ),
@@ -156,7 +158,7 @@ class _LoginWithEmailState extends State<LoginWithEmail> {
                                   fontWeight:
                                   FontWeight.normal,
                                   color: AppColors.black,
-                                ),)
+                                ),),
                               ],
                             ),),
 
@@ -171,11 +173,10 @@ class _LoginWithEmailState extends State<LoginWithEmail> {
               PrimaryButton(
                   buttonColor: AppColors.primary,
                   text: 'SIGN IN',
-                  onPressed: () {
-                    context.pushNamed(AppRoute.dashboardHome.name);
+                  onPressed: (){
 
-
-                  }),
+                  },
+              ),
               gapH8,
               Container(
                 // margin: const EdgeInsets.only(top: 8),
@@ -219,18 +220,26 @@ class _LoginWithEmailState extends State<LoginWithEmail> {
                         ),
                         recognizer:
                         TapGestureRecognizer()
-                          ..onTap = () {
-                          context.pushNamed(AppRoute.registerView.name);
-                            // Single tapped.
-                          },
+                          ..onTap = () =>changeRoute(context),
                       ),
                     ],
                   ),
                 ),
               ),
 
-            ]),
+            ],),
       ),
     );
   }
+
+
+
+}
+/// Navigate
+Future<void> changeRoute(BuildContext context) async {
+  await Future.delayed(const Duration(seconds: 1), () {
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (context) => const AccountCreationView()),
+    );
+  });
 }

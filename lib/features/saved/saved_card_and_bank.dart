@@ -34,7 +34,7 @@ class _SavedBankAndCardMainViewState extends State<SavedBankAndCardMainView> {
                     CupertinoIcons.back,
                     color: AppColors.primary,
                     size: 40,
-                  )),
+                  ),),
             ),
             body: SafeArea(
               child: Listener(
@@ -116,10 +116,10 @@ class _SavedBankAndCardMainViewState extends State<SavedBankAndCardMainView> {
 
                       const  SliverFillRemaining(
                         child: TabBarView(
-                          physics: const NeverScrollableScrollPhysics(),
+                          physics: NeverScrollableScrollPhysics(),
                           children: [
                             SavedBankAccounts(),
-                            SavedCards()
+                            SavedCards(),
                           ],
                         ),
                       ),
@@ -127,7 +127,7 @@ class _SavedBankAndCardMainViewState extends State<SavedBankAndCardMainView> {
                   ),
                 ),
               ),
-            )));
+            ),),);
     ;
   }
 }

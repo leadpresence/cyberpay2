@@ -6,6 +6,7 @@ import 'package:encrypt/encrypt.dart';
 import '../configs/configs.dart';
 
 class CryptoHelper {
+
   static String _getShaHashOfKey({int length = 32}) {
     List<int> bytes = utf8.encode(AppConfigs.ENCRYPT_KEY);
 

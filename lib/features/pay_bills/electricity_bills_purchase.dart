@@ -30,7 +30,7 @@ class _ElectricityBillsPurchaseState extends State<ElectricityBillsPurchase> {
                   CupertinoIcons.back,
                   color: AppColors.primary,
                   size: 40,
-                )),
+                ),),
           ),
           body: SafeArea(
               child: CustomScrollView(slivers: [
@@ -44,7 +44,7 @@ class _ElectricityBillsPurchaseState extends State<ElectricityBillsPurchase> {
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
                         color: AppColors.black, fontWeight: FontWeight.bold),
                   ),
-                )),
+                ),),
                 const   SliverToBoxAdapter(
               child: gapH16,
             ),
@@ -103,10 +103,10 @@ class _ElectricityBillsPurchaseState extends State<ElectricityBillsPurchase> {
                                   },
                                   icon: const Padding(
                                       padding: EdgeInsets.only(left: 20),
-                                      child: Icon(
+                                      child:Icon(
                                         CupertinoIcons.chevron_down,
                                         size: 16,
-                                      )),
+                                      ),),
                                   iconEnabledColor: AppColors.primary,
                                   //Icon color
                                   style:const  TextStyle(
@@ -117,7 +117,7 @@ class _ElectricityBillsPurchaseState extends State<ElectricityBillsPurchase> {
                                   underline: Container(),
                                   //remove underline
                                   isExpanded: true, //make true to make width 100%
-                                ))),
+                                ),),),
                         gapH16,
                         Text(
                           'Enter Amount',
@@ -171,14 +171,14 @@ class _ElectricityBillsPurchaseState extends State<ElectricityBillsPurchase> {
                                 buttonColor: AppColors.primary,
                                 text: 'PAY',
                                 onPressed: () {},
-                            btnWidth: screenSize(context).width*.80
+                            btnWidth: screenSize(context).width*.80,
                             ),
                           ],
                         ),
-                      ]),
+                      ],),
                 ),
               ),
-            )),
-          ])));
+            ),),
+          ],),),);
   }
 }

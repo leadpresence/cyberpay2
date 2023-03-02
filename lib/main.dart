@@ -3,9 +3,11 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+
+import 'common/data/local/hive_storage_service.dart';
+import 'common/data/local/storage_service.dart';
+import 'common/data/local/storage_service_provider.dart';
 import 'cyberpay_mobile.dart';
-import 'data/local/storage_service.dart';
-import 'data/local/storage_service_provider.dart';
 
 void main() async {
   // runApp(const MyApp());
@@ -21,7 +23,7 @@ void main() async {
           overrides: [
             storageServiceProvider.overrideWithValue(initializedStorageService),
           ],
-          child: const CyberPayApp(),
+          child:   CyberPayApp(),
         ),
       );
 
@@ -36,7 +38,13 @@ void main() async {
             backgroundColor: Colors.red,
             title: const Text('An error occurred'),
           ),
-          body: Center(child: Text(details.toString())),
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                Center(child: Text(details.toString())),
+              ],
+            ),
+          ),
         );
       };
         },

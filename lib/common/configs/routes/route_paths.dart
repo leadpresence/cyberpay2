@@ -7,7 +7,9 @@ import 'package:cyberpay_mobile_2/features/pay_bills/pay_utility_bills.dart';
 import 'package:cyberpay_mobile_2/features/send_recieve_money/receive/request_money.dart';
 import 'package:cyberpay_mobile_2/features/send_recieve_money/send/send_money.dart';
 import 'package:cyberpay_mobile_2/features/sign_up/account_creation_view.dart';
+import 'package:cyberpay_mobile_2/features/sign_up/sign_up_screen_state.dart';
 import 'package:cyberpay_mobile_2/features/virtual_card/virtual_card_view.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../../features/add_bank_and_card/add_main_view.dart';
@@ -23,6 +25,8 @@ import '../../../features/pay_bills/electricity_bills_purchase.dart';
 import '../../../features/pay_bills/internet_service_purchase.dart';
 import '../../../features/pay_bills/lcc_bills.dart';
 import '../../../features/saved/saved_card_and_bank.dart';
+import '../../../features/sign_up/sign_up_screen_state.dart';
+import '../../../features/sign_up/sign_up_screen_state.dart';
 import '../../../features/wallet/otp_verify_wallet_transaction.dart';
 import '../../../features/wallet/top_up_wallet.dart';
 import '../../../features/wallet/wallet_home.dart';
@@ -146,16 +150,26 @@ enum AppRoute {
 final goRouterProvider = Provider<GoRouter>((ref) {
 // final authRepository = ref.watch(assetMgmtAuthRepositoryProvider);
 // final sharedPreferences = ref.watch(sharedPreferencesServiceProvider);
-  return GoRouter(initialLocation: '/', routes: [
+
+
+  return GoRouter(
+    debugLogDiagnostics: true,
+    initialLocation: '/',
+    routes: <GoRoute>[
     GoRoute(
       path: '/',
       name: AppRoute.welcome.name,
       builder: (context, state) => const WelcomeSplash(),
-      routes: [
+      routes:<GoRoute> [
         GoRoute(
           path: 'loginView',
           name: AppRoute.loginView.name,
-          builder: (context, state) => const LoginView(),
+          pageBuilder: (context, state){
+            return  NoTransitionPage(
+                key: state.pageKey,
+                child:   LoginView(key: state.pageKey,), );
+          },
+          // builder: (context, state) => const LoginView(),
         ),
         GoRoute(
           path: 'introView',
@@ -163,9 +177,15 @@ final goRouterProvider = Provider<GoRouter>((ref) {
           builder: (context, state) => const CyberpayOnBoarding(),
         ),
         GoRoute(
-          path: 'registerView',
-          name: AppRoute.registerView.name,
-          builder: (context, state) => const AccountCreationView(),
+            path: 'registerView',
+            name: AppRoute.registerView.name,
+            pageBuilder: (context, state){
+              return  NoTransitionPage(
+                key: state.pageKey,
+                child:   AccountCreationView(key: state.pageKey,), );
+            },
+           // builder: (context, state) => const AccountCreationView(),
+
         ),
         GoRoute(
           path: 'dashboardHome',
@@ -289,5 +309,8 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         ),
       ],
     ),
-  ]);
+  ],);
 });
+
+
+// the following assertion was thrown building Navigator-[GlobalObject<NavigatorState> _WidgetsAppState

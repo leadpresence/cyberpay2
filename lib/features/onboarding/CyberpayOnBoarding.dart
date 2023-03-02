@@ -39,7 +39,7 @@ class _CyberpayOnBoardingState extends State<CyberpayOnBoarding> {
             Container(
                 margin: EdgeInsets.only(bottom: 20,top: 10),
                 height: 30,
-                child: Center(child: SvgPicture.asset(AppAssets.cyberpayLogo))),
+                child: Center(child: SvgPicture.asset(AppAssets.cyberpayLogo)),),
             Expanded(
               child: PageView.builder(
                 controller: _pageController,
@@ -78,7 +78,8 @@ class _CyberpayOnBoardingState extends State<CyberpayOnBoarding> {
                         buttonColor:AppColors.primary ,
                           onPressed: () {
                             if (headingsTr.length == (currentIndex + 1)) {
-                            context.pushNamed(AppRoute.loginView.name);
+                            // context.pushNamed(AppRoute.loginView.name);
+                              Navigator.pushNamed(context, '/loginView');
                             } else {
                               _pageController?.nextPage(
                                   duration: const Duration(milliseconds: 500),

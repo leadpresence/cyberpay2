@@ -30,7 +30,7 @@ class _CableTvPurchaseState extends State<CableTvPurchase> {
                 CupertinoIcons.back,
                 color: AppColors.primary,
                 size: 40,
-              )),
+              ),),
         ),
         body: SafeArea(
             child: CustomScrollView(slivers: [
@@ -42,9 +42,9 @@ class _CableTvPurchaseState extends State<CableTvPurchase> {
                     child: Text(
                       'TV Subscription',
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          color: AppColors.black, fontWeight: FontWeight.bold),
+                          color: AppColors.black, fontWeight: FontWeight.bold,),
                     ),
-                  )),
+                  ),),
               const  SliverToBoxAdapter(
                 child: gapH16,
               ),
@@ -122,7 +122,7 @@ class _CableTvPurchaseState extends State<CableTvPurchase> {
                                             child: Icon(
                                               CupertinoIcons.chevron_down,
                                               size: 16,
-                                            )),
+                                            ),),
                                         iconEnabledColor: AppColors.primary,
                                         //Icon color
                                         style: const TextStyle( color: AppColors.primary, fontSize: 12 ),
@@ -131,7 +131,7 @@ class _CableTvPurchaseState extends State<CableTvPurchase> {
                                         underline: Container(),
                                         //remove underline
                                         isExpanded: true, //make true to make width 100%
-                                      ))),
+                                      ),),),
                               gapH16,
                               Text(
                                 'Enter Amount',
@@ -189,11 +189,10 @@ class _CableTvPurchaseState extends State<CableTvPurchase> {
                                   ),
                                 ],
                               ),
-                            ]),
+                            ],),
                       ),
                     ),
-                  )),
-            ])));
-    ;
+                  ),),
+            ],),),);
   }
 }

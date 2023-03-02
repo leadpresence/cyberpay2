@@ -25,7 +25,7 @@ class _WelcomeSplashState extends State<WelcomeSplash> {
             () {
           /// Check if user is logged in
               context.pushNamed(AppRoute.introView.name);
-        });
+        },);
   }
 
   @override

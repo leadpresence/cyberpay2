@@ -32,7 +32,7 @@ class SavedCards extends StatelessWidget {
                       .copyWith(
                     fontWeight: FontWeight.bold,
                     color: AppColors.black,
-                  )),
+                  ),),
             ),
 
 

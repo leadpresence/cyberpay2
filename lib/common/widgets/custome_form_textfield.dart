@@ -1,12 +1,12 @@
-import 'package:cyberpay_mobile_2/core/configs/styles/app_sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import '../configs/styles/app_colors.dart';
+import '../configs/styles/app_sizes.dart';
 
+/// CustomSearchTextField
 class CustomSearchTextField extends StatefulWidget {
-  const CustomSearchTextField({
+  /// creates an instance of [CustomSearchTextField]
+  const CustomSearchTextField({super.key,
     this.readOnly = false,
     this.onTap,
     this.isDropdownField = false,

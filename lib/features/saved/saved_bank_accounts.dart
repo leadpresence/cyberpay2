@@ -36,7 +36,7 @@ class SavedBankAccounts extends StatelessWidget {
                       .copyWith(
                     fontWeight: FontWeight.bold,
                     color: AppColors.black,
-                  )),
+                  ),),
             ),
 
 

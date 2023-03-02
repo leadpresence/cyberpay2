@@ -1,23 +1,37 @@
 import 'package:cyberpay_mobile_2/common/configs/styles/app_colors.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:cyberpay_mobile_2/common/utils/async_value_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../../common/configs/styles/app_assests.dart';
 import '../../common/configs/styles/app_sizes.dart';
+import '../sign_up/create_customer_controller.dart';
+import 'login_controller.dart';
 import 'login_with_email.dart';
 import 'login_with_phone.dart';
 
-class LoginView extends StatefulWidget {
+/// LoginView
+class LoginView extends ConsumerStatefulWidget {
+  /// Constructor LoginView
   const LoginView({Key? key}) : super(key: key);
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  ConsumerState<LoginView> createState() => _LoginViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _LoginViewState extends ConsumerState<LoginView> {
+  final emailViewKey = UniqueKey();
+  final phoneViewKey = UniqueKey();
+
   @override
   Widget build(BuildContext context) {
+    ref.listen<AsyncValue<void>>(
+      createCustomerControllerProvider.select((state) => state.submitValue),
+          (_, state) => state.showAlertDialogOnError(context),
+      onError: (error, stackTrace) => debugPrint('An error occurred $error'),
+    );
+
+    final controller = ref.watch(loginControllerProvider.notifier);
 
     return
       DefaultTabController(
@@ -28,10 +42,10 @@ class _LoginViewState extends State<LoginView> {
               elevation: 0,
               centerTitle: true,
               title: Container(
-                  margin: EdgeInsets.only(bottom: 20, top: 10),
+                  margin: const EdgeInsets.only(bottom: 20, top: 10),
                   height: 30,
                   child:
-                      Center(child: SvgPicture.asset(AppAssets.cyberpayLogo))),
+                      Center(child: SvgPicture.asset(AppAssets.cyberpayLogo)),),
             ),
             body: SafeArea(
               child: Container(
@@ -70,8 +84,8 @@ class _LoginViewState extends State<LoginView> {
                             ),
                             child: TabBar(
 
-                              labelStyle:TextStyle(color: AppColors.white,fontSize: 12.0,fontWeight: FontWeight.bold),
-                              unselectedLabelStyle: TextStyle(fontSize: 12.0,color: AppColors.white,fontWeight: FontWeight.bold),
+                              labelStyle:const TextStyle(color: AppColors.white,fontSize: 12.0,fontWeight: FontWeight.bold),
+                              unselectedLabelStyle: const TextStyle(fontSize: 12.0,color: AppColors.white,fontWeight: FontWeight.bold),
                               labelPadding: const EdgeInsets.all(0),
                               unselectedLabelColor: AppColors.dark_blue,
                               indicatorSize: TabBarIndicatorSize.label,
@@ -85,8 +99,8 @@ class _LoginViewState extends State<LoginView> {
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(4),
                                     ),
-                                    child:   Align(
-                                        child: Text('EMAIL ADDRESS')
+                                    child:   const Align(
+                                        child: Text('EMAIL ADDRESS'),
                                     ),
                                   ),
                                 ),
@@ -95,8 +109,8 @@ class _LoginViewState extends State<LoginView> {
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(4),
                                     ),
-                                    child:   Align(
-                                        child: Text('PHONE NUMBER')),
+                                    child:   const Align(
+                                        child: Text('PHONE NUMBER'),),
                                   ),
                                 ),
 
@@ -106,18 +120,20 @@ class _LoginViewState extends State<LoginView> {
                         ],
                       ),
                     ),
-                    SliverFillRemaining(
+                      SliverFillRemaining(
                       child: TabBarView(
-                        physics: const NeverScrollableScrollPhysics(),
+                        physics: NeverScrollableScrollPhysics(),
                         children: [
-                          LoginWithEmail(),
-                          LoginWithPhone(),
+                          LoginWithEmail(key: emailViewKey,),
+                          LoginWithPhone(ref:controller.ref ,key: phoneViewKey,),
                         ],
                       ),
                     ),
                   ],
                 ),
               ),
-            )));
-  }
-}
+            ),),);
+  }}
+
+
+  // The following assertion was thrown building Navigator - [ LabeledGlobalKey<NavigatorState> ()](dependencies (HeroControllerScope,UnmanagedRestorationScope)
