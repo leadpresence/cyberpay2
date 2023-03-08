@@ -2,10 +2,12 @@
 //
 //     final loginResponse = loginResponseFromMap(jsonString);
 
+import 'package:cyberpay_mobile_2/common/data/models/local/local_user.dart';
 import 'package:meta/meta.dart';
 import 'dart:convert';
 
-LoginResponse loginResponseFromMap(String str) => LoginResponse.fromMap(json.decode(str));
+LoginResponse loginResponseFromMap(String str) =>
+    LoginResponse.fromMap(json.decode(str));
 
 String loginResponseToMap(LoginResponse data) => json.encode(data.toMap());
 
@@ -22,13 +24,13 @@ class LoginResponse {
   final int? status;
   final int? statusCode;
   final String? message;
-  final Result? result;
+  final UserDataResult?   result;
 
   LoginResponse copyWith({
-    required  int status,
+    required int status,
     required int statusCode,
-    required  String message,
-    required  Result result,
+    required String message,
+    required UserDataResult result,
   }) =>
       LoginResponse(
         status: status ?? this.status,
@@ -38,23 +40,24 @@ class LoginResponse {
       );
 
   factory LoginResponse.fromMap(Map<String, dynamic> json) => LoginResponse(
-    status: json['status'],
-    statusCode: json['statusCode'],
-    message: json['message'],
-    result: Result.fromMap(json['result']),
-  );
+        status: json['status'],
+        statusCode: json['statusCode'],
+        message: json['message'],
+        result: UserDataResult.fromMap(json['result']),
+      );
 
   Map<String, dynamic> toMap() => {
-    'status': status,
-    'statusCode': statusCode,
-    'message': message,
-    'result': result?.toMap(),
-  };
+        'status': status,
+        'statusCode': statusCode,
+        'message': message,
+        'result': result?.toMap(),
+      };
 }
+
 ///
-class Result {
+class UserDataResult {
   ///
-  Result({
+  UserDataResult({
     required this.userId,
     required this.authToken,
     required this.userName,
@@ -94,27 +97,27 @@ class Result {
   final bool isRegister;
   final String businessCode;
 
-  Result copyWith({
+  UserDataResult copyWith({
     required int userId,
     required String authToken,
     required String userName,
-    required  String email,
-    required  int userType,
-    required  String profilePicture,
+    required String email,
+    required int userType,
+    required String profilePicture,
     required String mobileNo,
-    required  int walletAmount,
-    required  DateTime dateOfBirth,
+    required int walletAmount,
+    required DateTime dateOfBirth,
     required String firstName,
     required String lastName,
     required int gender,
-    required  String userChatId,
-    required  String countryCode,
+    required String userChatId,
+    required String countryCode,
     required String walletCode,
-    required  String adminChatId,
-    required  bool isRegister,
-    required  String businessCode,
+    required String adminChatId,
+    required bool isRegister,
+    required String businessCode,
   }) =>
-      Result(
+      UserDataResult(
         userId: userId ?? this.userId,
         authToken: authToken ?? this.authToken,
         userName: userName ?? this.userName,
@@ -135,45 +138,64 @@ class Result {
         businessCode: businessCode ?? this.businessCode,
       );
 
-  factory Result.fromMap(Map<String, dynamic> json) => Result(
-    userId: json['userId'],
-    authToken: json['authToken'],
-    userName: json['userName'],
-    email: json['email'],
-    userType: json['userType'],
-    profilePicture: json['profilePicture'],
-    mobileNo: json['mobileNo'],
-    walletAmount: json['walletAmount'],
-    dateOfBirth: DateTime.parse(json['dateOfBirth']),
-    firstName: json['firstName'],
-    lastName: json['lastName'],
-    gender: json['gender'],
-    userChatId: json['userChatId'],
-    countryCode: json['countryCode'],
-    walletCode: json['walletCode'],
-    adminChatId: json['adminChatId'],
-    isRegister: json['isRegister'],
-    businessCode: json['businessCode'],
-  );
+  factory UserDataResult.fromMap(Map<String, dynamic> json) => UserDataResult(
+        userId: json['userId'],
+        authToken: json['authToken'],
+        userName: json['userName'],
+        email: json['email'],
+        userType: json['userType'],
+        profilePicture: json['profilePicture'],
+        mobileNo: json['mobileNo'],
+        walletAmount: json['walletAmount'],
+        dateOfBirth: DateTime.parse(json['dateOfBirth']),
+        firstName: json['firstName'],
+        lastName: json['lastName'],
+        gender: json['gender'],
+        userChatId: json['userChatId'],
+        countryCode: json['countryCode'],
+        walletCode: json['walletCode'],
+        adminChatId: json['adminChatId'],
+        isRegister: json['isRegister'],
+        businessCode: json['businessCode'],
+      );
 
   Map<String, dynamic> toMap() => {
-    'userId': userId,
-    'authToken': authToken,
-    'userName': userName,
-    'email': email,
-    'userType': userType,
-    'profilePicture': profilePicture,
-    'mobileNo': mobileNo,
-    'walletAmount': walletAmount,
-    'dateOfBirth': dateOfBirth.toIso8601String(),
-    'firstName': firstName,
-    'lastName': lastName,
-    'gender': gender,
-    'userChatId': userChatId,
-    'countryCode': countryCode,
-    'walletCode': walletCode,
-    'adminChatId': adminChatId,
-    'isRegister': isRegister,
-    'businessCode': businessCode,
-  };
+        'userId': userId,
+        'authToken': authToken,
+        'userName': userName,
+        'email': email,
+        'userType': userType,
+        'profilePicture': profilePicture,
+        'mobileNo': mobileNo,
+        'walletAmount': walletAmount,
+        'dateOfBirth': dateOfBirth.toIso8601String(),
+        'firstName': firstName,
+        'lastName': lastName,
+        'gender': gender,
+        'userChatId': userChatId,
+        'countryCode': countryCode,
+        'walletCode': walletCode,
+        'adminChatId': adminChatId,
+        'isRegister': isRegister,
+        'businessCode': businessCode,
+      };
+
+// /// Converts login response for local storage
+//   fromMapToLocalUser(Map<String, dynamic> json) => LocalUser(
+//         id: json['userId'],
+//         cyberpayUserId: json['userId'],
+//         firstName: json['firstName'],
+//         lastName: json['lastName'],
+//         authToken: json['authToken'],
+//         email: json['email'],
+//         userRole: json['userType'],
+//         phoneNumber: json['mobileNo'],
+//         walletAmount: json['walletAmount'],
+//         phoneDialCode: json['countryCode'],
+//         walletId: json['walletCode'],
+//         isPhoneNumberVerified: json['isRegister'],
+//         businessCode: json['businessCode'],
+//       );
 }
+
+

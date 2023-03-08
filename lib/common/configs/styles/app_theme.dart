@@ -16,7 +16,6 @@ ThemeData darkTheme = ThemeData(
     secondary: AppColors.secondary,
     background: AppColors.dark_background,
   ),
-
   backgroundColor: AppColors.black,
   textTheme: darkTextTheme,
   primaryTextTheme: primaryTextTheme,
@@ -55,9 +54,9 @@ ThemeData lightTheme = ThemeData(
         borderSide: BorderSide(color: AppColors.red.withOpacity(0.2), width: 2.0),
       ),
     ),
-    menuStyle: MenuStyle(
+    menuStyle: const MenuStyle(
 
-    )
+    ),
 
   ) ,
   inputDecorationTheme: InputDecorationTheme(
@@ -85,7 +84,7 @@ ThemeData lightTheme = ThemeData(
 /// Styles class holding app text theming information
 // class TextThemes {
 /// Main text theme
-TextTheme appTextTheme = TextTheme(
+TextTheme appTextTheme = const TextTheme(
   bodyText1: AppTextStyles.bodyLg,
   bodyText2: AppTextStyles.body,
   subtitle1: AppTextStyles.bodySm,

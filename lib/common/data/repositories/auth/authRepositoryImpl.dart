@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:cyberpay_mobile_2/common/data/models/api/login_request.dart';
 import 'package:cyberpay_mobile_2/common/data/models/api/new_customer_wallet_request.dart';
 import 'package:cyberpay_mobile_2/common/data/models/api/resend_otp_request.dart';
@@ -6,6 +8,7 @@ import 'package:cyberpay_mobile_2/common/data/remote/network/network_provider.da
 import 'package:cyberpay_mobile_2/common/data/repositories/auth/AuthRepository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../env/app_env.dart';
+import '../../models/api/login_response.dart';
 
 
 /// Implementation of Auth Endpoints
@@ -43,16 +46,18 @@ class AuthRepositoryImpl extends AuthRepository {
     final response =await NetworkProvider.fromBaseUrl(CybAppEnvironment.cyberpayWebApiUrl).post(
       'CustomerWallet/resendOtp',body: resendOtpRequest.toJson(),
     );
+
     return response;
   }
 
   @override
-  Future login(LoginRequest loginRequest) async {
+  Future  login(LoginRequest loginRequest) async {
     /// Call to network
-    final response =await NetworkProvider.fromBaseUrl(CybAppEnvironment.cyberpayWebApiUrl).post(
+    final responseBody = await NetworkProvider.fromBaseUrl(CybAppEnvironment.cyberpayWebApiUrl).post(
       'ext/login',body: loginRequest.toMap(),
     );
-    return response;
+
+    return responseBody;
   }
 
 

@@ -1,16 +1,13 @@
 // To parse this JSON data, do
 //
-//     final resetPasswordRequest = resetPasswordRequestFromJson(jsonString);
+//     final resetPasswordRequest = resetPasswordRequestFromMap(jsonString);
 
+import 'package:meta/meta.dart';
 import 'dart:convert';
 
-import 'package:flutter/cupertino.dart';
+ResetPasswordRequest resetPasswordRequestFromMap(String str) => ResetPasswordRequest.fromMap(json.decode(str));
 
-ResetPasswordRequest resetPasswordRequestFromJson(String str) =>
-    ResetPasswordRequest.fromJson(json.decode(str));
-
-String resetPasswordRequestToJson(ResetPasswordRequest data) =>
-    json.encode(data.toJson());
+String resetPasswordRequestToMap(ResetPasswordRequest data) => json.encode(data.toMap());
 
 class ResetPasswordRequest {
   ResetPasswordRequest({
@@ -19,20 +16,30 @@ class ResetPasswordRequest {
     required this.resetCode,
   });
 
-  String mobileNo;
-  String newPassword;
-  String resetCode;
+  final String mobileNo;
+  final String newPassword;
+  final String resetCode;
 
-  factory ResetPasswordRequest.fromJson(Map<String, dynamic> json) =>
+  ResetPasswordRequest copyWith({
+    required String mobileNo,
+    required String newPassword,
+    required String resetCode,
+  }) =>
       ResetPasswordRequest(
-        mobileNo: json["mobileNo"],
-        newPassword: json["newPassword"],
-        resetCode: json["resetCode"],
+        mobileNo: mobileNo ?? this.mobileNo,
+        newPassword: newPassword ?? this.newPassword,
+        resetCode: resetCode ?? this.resetCode,
       );
 
-  Map<String, dynamic> toJson() => {
-        "mobileNo": mobileNo,
-        "newPassword": newPassword,
-        "resetCode": resetCode,
-      };
+  factory ResetPasswordRequest.fromMap(Map<String, dynamic> json) => ResetPasswordRequest(
+    mobileNo: json["mobileNo"],
+    newPassword: json["newPassword"],
+    resetCode: json["resetCode"],
+  );
+
+  Map<String, dynamic> toMap() => {
+    "mobileNo": mobileNo,
+    "newPassword": newPassword,
+    "resetCode": resetCode,
+  };
 }

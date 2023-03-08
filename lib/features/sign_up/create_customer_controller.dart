@@ -1,9 +1,7 @@
 import 'package:cyberpay_mobile_2/common/data/models/api/verify_otp_request.dart';
 import 'package:cyberpay_mobile_2/features/sign_up/sign_up_screen_state.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/animation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter/material.dart';
 
 import '../../common/data/models/api/new_customer_wallet_request.dart';
 import '../../common/data/models/api/new_customer_wallet_response.dart';
@@ -18,7 +16,6 @@ class CreateCustomerController extends StateNotifier<SignUpScreenState> {
   /// An object used by providers to interact with other providers
   /// and the life-cycles of the application.
   Ref ref;
-
 
   /// CreateCustomerController Constructor
   CreateCustomerController(this.ref) : super(SignUpScreenState());
@@ -94,17 +91,18 @@ class CreateCustomerController extends StateNotifier<SignUpScreenState> {
   Future<VerifyOtpResponse> resendUserOtp(ResendOtpRequest resendOtpRequest) async {
     final repo = ref.read(authRepositoryImplProvider);
     try {
-      state = state.copyWith(submitValue: const AsyncLoading());
+      state = state.copyWith(resendOtpValue: const AsyncLoading(),);
       final res = await repo.resendUserOtp(resendOtpRequest);
       if (mounted) {
         state = state.copyWith(
           submitValue: const AsyncData(null),
           verifyOtpValue: const AsyncData(null),
           otpVerified: false,
+          resendOtpValue:   AsyncData(res),
 
         );
       }
-
+      state = state.copyWith(resendOtpValue: AsyncData(res),);
       return res;
     } on DioError catch (err, stackTraceMsg) {
       state = state.copyWith(

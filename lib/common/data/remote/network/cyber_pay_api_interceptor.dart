@@ -7,10 +7,13 @@ import '../../local/shared_pref_constants.dart';
   class CyberPayApiInterceptor extends Interceptor {
   /// Constructor.
 
-    CyberPayApiInterceptor(this._apiKey,this._secret);
+    CyberPayApiInterceptor(this._apiKey,this._secret,
+        {this.requireAuthorization = false,});
 
   final String _apiKey;
   final String _secret;
+  /// if true user token will be added to the Headers
+  final bool requireAuthorization ;
 
   @override
   Future onRequest(

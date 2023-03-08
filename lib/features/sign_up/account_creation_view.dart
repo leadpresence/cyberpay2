@@ -67,6 +67,14 @@ class _AccountCreationViewState extends ConsumerState<AccountCreationView>
   late AnimationController animationController;
   late Animation<Color?> _Tween;
 
+  bool _passwordHidden = true;
+
+  void togglePasswordVisibility() {
+    setState(() {
+      _passwordHidden = !_passwordHidden;
+    });
+  }
+
   void startTimer() {
     animationController.forward();
   }
@@ -232,7 +240,7 @@ class _AccountCreationViewState extends ConsumerState<AccountCreationView>
                               isVerificationView: false,
                             ),
                             gapH24,
-                            CustomTextField(
+                            CustomTextFormField(
                               title: 'First Name',
                               inputType: TextInputType.text,
                               controller: firstNameController,
@@ -243,7 +251,7 @@ class _AccountCreationViewState extends ConsumerState<AccountCreationView>
                               },
                             ),
                             gapH12,
-                            CustomTextField(
+                            CustomTextFormField(
                               title: 'Last Name',
                               inputType: TextInputType.text,
                               controller: lastNameController,
@@ -254,7 +262,7 @@ class _AccountCreationViewState extends ConsumerState<AccountCreationView>
                               },
                             ),
                             gapH12,
-                            CustomTextField(
+                            CustomTextFormField(
                               title: 'Email',
                               inputType: TextInputType.emailAddress,
                               controller: emailController,
@@ -265,7 +273,7 @@ class _AccountCreationViewState extends ConsumerState<AccountCreationView>
                               },
                             ),
                             gapH12,
-                            CustomTextField(
+                            CustomTextFormField(
                               title: 'Phone Number',
                               hint: '0XX XXXX XXXX',
                               inputType: TextInputType.phone,
@@ -277,23 +285,28 @@ class _AccountCreationViewState extends ConsumerState<AccountCreationView>
                               },
                             ),
                             gapH12,
-                            CustomTextField(
+                            CustomTextFormField(
                               title: 'Password',
                               inputType: TextInputType.visiblePassword,
                               controller: passwordController,
-                              isPassword: true,
+                              isPassword: _passwordHidden,
+                              showSuffixIcon: true,
                               validator: (value) {
                                 if (!value.toString().isValidPassword) {
                                   return 'Enter valid password';
                                 }
                               },
+                              isEyeIconHidden: _passwordHidden,
+                              togglePasswordVisibility: togglePasswordVisibility,
                             ),
                             gapH12,
-                            CustomTextField(
+                            CustomTextFormField(
                               title: 'Confirm Password',
                               inputType: TextInputType.visiblePassword,
                               controller: confirmPasswordController,
-                              isPassword: true,
+                              isPassword: _passwordHidden,
+                              togglePasswordVisibility: togglePasswordVisibility,
+                              showSuffixIcon: true,
                               validator: (value) {
                                 if (!value.toString().isValidPassword) {
                                   return 'Enter valid password';
@@ -378,10 +391,11 @@ class _AccountCreationViewState extends ConsumerState<AccountCreationView>
                                 if (_personalDetailsFormKey.currentState!
                                     .validate()) {
                                   if (createNewCustomerState.agreedToTerms) {
-                                _createAccountPageController?.nextPage(
-                                  duration: const Duration(milliseconds: 500),
-                                  curve: Curves.ease,
-                                );
+                                    _createAccountPageController?.nextPage(
+                                      duration:
+                                          const Duration(milliseconds: 500),
+                                      curve: Curves.ease,
+                                    );
                                   } else {
                                     const snackBar = SnackBar(
                                       content: Text(
@@ -549,12 +563,13 @@ class _AccountCreationViewState extends ConsumerState<AccountCreationView>
                                           ),
                                         );
                                       }
-                                _createAccountPageController?.nextPage(
-                                  duration: const Duration(milliseconds: 500),
-                                  curve: Curves.ease,
-                                );
-                                startTimer();
-                              },
+                                      _createAccountPageController?.nextPage(
+                                        duration:
+                                            const Duration(milliseconds: 500),
+                                        curve: Curves.ease,
+                                      );
+                                      startTimer();
+                                    },
                             ),
                           ],
                         ),
@@ -700,7 +715,24 @@ class _AccountCreationViewState extends ConsumerState<AccountCreationView>
                                 animationController,
                               ),
                             ),
-
+                            gapH48,
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                if (createNewCustomerState
+                                    .resendOtpValue.hasValue)
+                                  const Icon(
+                                    Icons.check,
+                                    color: Colors.green,
+                                  )
+                                else
+                                  const SizedBox(
+                                    height: 15,
+                                    width: 15,
+                                    child: CupertinoActivityIndicator(),
+                                  ),
+                              ],
+                            ),
                             gapH48,
                             PrimaryButton(
                               buttonColor: AppColors.primary,

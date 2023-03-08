@@ -1,5 +1,6 @@
-import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
+
+import 'package:shared_preferences/shared_preferences.dart';
 
 /// Theme preference for app
 class ThemePref {

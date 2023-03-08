@@ -53,12 +53,16 @@ class _DashboardHomeState extends State<DashboardHome> {
                 InkWell(
                     borderRadius: const BorderRadius.all(Radius.circular(15)),
                   splashColor: AppColors.primary.withOpacity(0.3),
-                  onTap: ()=>context.pushNamed(AppRoute.profileView.name),
+                  onTap: () {
+                    // context.pushNamed(AppRoute.profileView.name);
+                  },
                     child: SvgPicture.asset(AppAssets.settings),),
                 InkWell(
                   borderRadius: const BorderRadius.all(Radius.circular(15)),
                   splashColor: AppColors.primary.withOpacity(0.3),
-                  onTap: ()=>context.pushNamed(AppRoute.transactions.name),
+                  onTap: () {
+                    // context.pushNamed(AppRoute.transactions.name);
+                  },
                   child: Padding(
                     padding: const EdgeInsets.only(right: 18.0, left: 8),
                     child: SvgPicture.asset(AppAssets.notifications),

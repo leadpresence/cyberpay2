@@ -22,17 +22,7 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     return
       Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        centerTitle: true,
-        leading: InkWell(
-            onTap: () => Navigator.pop(context),
-            child: const Icon(
-              CupertinoIcons.back,
-              color: AppColors.primary,
-              size: 40,
-            )),
-      ),
+
       body: SafeArea(
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 18),
@@ -42,13 +32,13 @@ class _ProfileState extends State<Profile> {
                   expandedHeight:kToolbarHeight/2,
                   automaticallyImplyLeading: false,
                   flexibleSpace: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 18.0),
+                    margin: const EdgeInsets.symmetric(horizontal: 18.0,vertical: 10),
                     child: Text(
                       'Profile',
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          color: AppColors.black, fontWeight: FontWeight.bold),
+                          color: AppColors.black, fontWeight: FontWeight.bold,),
                     ),
-                  )),
+                  ),),
               SliverToBoxAdapter(
                 child: Column(
                   children: [
@@ -59,7 +49,8 @@ class _ProfileState extends State<Profile> {
                           width: 88.2,
                           height: 90,
                           child: SvgPicture.asset(AppAssets.avatar),
-                        )
+                        ),
+
                       ],
                     ),
                     gapH8,
@@ -75,7 +66,7 @@ class _ProfileState extends State<Profile> {
                               .bodyLarge
                               ?.copyWith(
                                   color: AppColors.black,
-                                  fontWeight: FontWeight.bold),
+                                  fontWeight: FontWeight.bold,),
                         ),
                       ],
                     ),

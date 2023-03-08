@@ -17,6 +17,8 @@ class SignUpScreenState {
 
   /// The submit value.
   final AsyncValue<void> submitValue;
+  /// Resend otp
+  final AsyncValue<void> resendOtpValue;
 
   /// otp verified
   bool otpVerified;
@@ -29,6 +31,7 @@ class SignUpScreenState {
     this.stage = NewCustomerStage.profile,
     this.value = const AsyncValue.data(null),
     this.submitValue = const AsyncValue.data(null),
+    this.resendOtpValue = const AsyncValue.data(null),
     this.verifyOtpValue = const AsyncValue.data(null),
     this.agreedToTerms = false,
     this.otpVerified = false,
@@ -41,6 +44,7 @@ class SignUpScreenState {
     AsyncValue<NewCustomerWalletResponse?>? value,
     AsyncValue<void>? verifyOtpValue,
     AsyncValue<void>? submitValue,
+    AsyncValue<void>? resendOtpValue,
     bool agreedToTerms =false,
     bool? otpVerified,
   }) {
@@ -50,6 +54,7 @@ class SignUpScreenState {
       otpVerified: otpVerified ?? this.otpVerified,
       agreedToTerms: agreedToTerms ?? this.agreedToTerms,
       submitValue: submitValue ?? this.submitValue,
+      resendOtpValue: resendOtpValue ?? this.resendOtpValue,
       verifyOtpValue: verifyOtpValue ?? this.verifyOtpValue,
     );
   }
@@ -62,6 +67,7 @@ class SignUpScreenState {
         otpVerified.hashCode ^
         agreedToTerms.hashCode ^
         submitValue.hashCode ^
+    resendOtpValue.hashCode ^
         verifyOtpValue.hashCode;
   }
 
@@ -75,6 +81,7 @@ class SignUpScreenState {
         other.stage == stage &&
         other.verifyOtpValue == verifyOtpValue &&
         other.submitValue == submitValue &&
+        other.resendOtpValue == resendOtpValue &&
         other.otpVerified == agreedToTerms &&
         other.otpVerified == otpVerified;
   }

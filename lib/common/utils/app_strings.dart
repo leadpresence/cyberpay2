@@ -1,5 +1,6 @@
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:path/path.dart';
 
@@ -53,5 +54,42 @@ const List<String> dashboardImageList = [
   AppAssets.airtime_data,
   AppAssets.virtual_cards,
   AppAssets.gaming,
+];
+
+
+/// BottomNavItem class
+class BottomNavItem {
+  final Widget svgWidget;
+  final String name;
+  final Color? color;
+
+  /// Constructor BottomNavItem
+  BottomNavItem({required this.svgWidget, required this.name, this.color}) : super();
+}
+
+List<BottomNavItem> tabItems = [
+  BottomNavItem(
+    svgWidget: SvgPicture.asset(
+      'assets/home.svg',),
+    name: 'Home',
+  ),
+  BottomNavItem(
+    svgWidget: SvgPicture.asset(
+      'assets/transactions.svg',
+    ),
+    name: 'Transactions',
+  ),
+  BottomNavItem(
+    svgWidget: SvgPicture.asset(
+      'assets/help.svg',
+    ),
+    name: 'Help',
+  ),
+  BottomNavItem(
+    svgWidget: SvgPicture.asset(
+      'assets/profile.svg',
+    ),
+    name: 'Profile',
+  ),
 ];
 

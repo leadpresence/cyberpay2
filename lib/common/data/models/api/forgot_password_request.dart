@@ -1,29 +1,42 @@
 // To parse this JSON data, do
 //
-//     final forgotPasswordRequest = forgotPasswordRequestFromJson(jsonString);
+//     final forgotPasswordRequest = forgotPasswordRequestFromMap(jsonString);
 
+import 'package:meta/meta.dart';
 import 'dart:convert';
 
-ForgotPasswordRequest forgotPasswordRequestFromJson(String str) => ForgotPasswordRequest.fromJson(json.decode(str));
+ForgotPasswordRequest forgotPasswordRequestFromMap(String str) => ForgotPasswordRequest.fromMap(json.decode(str));
 
-String forgotPasswordRequestToJson(ForgotPasswordRequest data) => json.encode(data.toJson());
+String forgotPasswordRequestToMap(ForgotPasswordRequest data) => json.encode(data.toMap());
 
+/// ForgotPasswordRequest
 class ForgotPasswordRequest {
-    ForgotPasswordRequest({
-      required  this.mobileNo,
-      required  this.countryCode,
-    });
+  /// Constructor for ForgotPasswordRequest
 
-    String mobileNo;
-    String countryCode;
+  ForgotPasswordRequest({
+    required this.mobileNo,
+    required this.countryCode,
+  });
 
-    factory ForgotPasswordRequest.fromJson(Map<String, dynamic> json) => ForgotPasswordRequest(
-        mobileNo: json["MobileNo"],
-        countryCode: json["countryCode"],
-    );
+  final String mobileNo;
+  final String countryCode;
 
-    Map<String, dynamic> toJson() => {
-        "MobileNo": mobileNo,
-        "countryCode": countryCode,
-    };
+  ForgotPasswordRequest copyWith({
+    required String mobileNo,
+    required String countryCode,
+  }) =>
+      ForgotPasswordRequest(
+        mobileNo: mobileNo ?? this.mobileNo,
+        countryCode: countryCode ?? this.countryCode,
+      );
+
+  factory ForgotPasswordRequest.fromMap(Map<String, dynamic> json) => ForgotPasswordRequest(
+    mobileNo: json["MobileNo"],
+    countryCode: json["countryCode"],
+  );
+
+  Map<String, dynamic> toMap() => {
+    "MobileNo": mobileNo,
+    "countryCode": countryCode,
+  };
 }

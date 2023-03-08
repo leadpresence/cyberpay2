@@ -39,6 +39,8 @@ extension  SharePreferenceService on SharedPreferences{
   }
 
   /// ----------------------------METHODS----------------------------------------
+
+
   /// Save User number
   void saveUserPhoneNumber(String? phoneNumber){
     if(phoneNumber!=null){
@@ -50,6 +52,7 @@ extension  SharePreferenceService on SharedPreferences{
   void saveUserIsLoggedIn({required bool loggedInValue}){
       _saveToPreferences(SharedPrefKeys.isLoggedIn, loggedInValue);
   }
+
   /// Get User Phone Number
   String get phoneNumber{
     final userPhoneNumber = _getFromDisk(SharedPrefKeys.phoneNumber);
@@ -58,7 +61,6 @@ extension  SharePreferenceService on SharedPreferences{
     }
 
     return '';
-
   }
   bool get isLoggedInValue{
     final loggedIn = _getFromDisk(SharedPrefKeys.isLoggedIn);
@@ -68,9 +70,5 @@ extension  SharePreferenceService on SharedPreferences{
 
     return false;
   }
-
-
-
-
 
 }

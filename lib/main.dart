@@ -9,6 +9,7 @@ import 'common/data/local/hive_storage_service.dart';
 import 'common/data/local/shared_preference_service.dart';
 import 'common/data/local/storage_service.dart';
 import 'common/data/local/storage_service_provider.dart';
+import 'common/data/models/local/local_user.dart';
 import 'cyberpay_mobile.dart';
 
 void main() async {
@@ -16,6 +17,7 @@ void main() async {
         () async {
       // Storage -specific initialization
       await Hive.initFlutter();
+      Hive.registerAdapter(LocalUserAdapter());
       final StorageService initializedStorageService = HiveStorageService();
       final sharedPreferences = await SharedPreferences.getInstance();
 

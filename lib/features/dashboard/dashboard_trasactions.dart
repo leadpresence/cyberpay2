@@ -25,14 +25,7 @@ class _TransactionsState extends State<Transactions> {
       appBar: AppBar(
         elevation: 0,
         centerTitle: true,
-        leading: InkWell(
-            borderRadius: const BorderRadius.all(Radius.circular(15)),
-            onTap: () => Navigator.pop(context),
-            child: const Icon(
-              CupertinoIcons.back,
-              color: AppColors.primary,
-              size: 40,
-            )),
+
       ),
       body: SafeArea(
         child: Container(

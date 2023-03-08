@@ -1,6 +1,7 @@
 import 'package:cyberpay_mobile_2/common/data/models/api/login_request.dart';
 import 'package:cyberpay_mobile_2/common/utils/extensions.dart';
 import 'package:cyberpay_mobile_2/common/widgets/custom_text_field.dart';
+import 'package:cyberpay_mobile_2/features/dashboard/dashboard_tabs.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -15,10 +16,10 @@ import '../../common/configs/styles/app_sizes.dart';
 import '../../common/widgets/primary_button.dart';
 import 'login_controller.dart';
 
-///
+/// LoginWithPhone
 class LoginWithPhone extends ConsumerStatefulWidget {
-  ///
-  LoginWithPhone({Key? key}) : super(key: key);
+  /// LoginWithPhone
+  const LoginWithPhone({Key? key}) : super(key: key);
 
   @override
   ConsumerState<LoginWithPhone> createState() => _LoginWithPhoneState();
@@ -26,16 +27,44 @@ class LoginWithPhone extends ConsumerStatefulWidget {
 
 class _LoginWithPhoneState extends ConsumerState<LoginWithPhone> {
   final withPhoneKey = GlobalKey<FormState>();
+  bool userLoggedIn = false;
   TextEditingController loginPhoneNumberController = TextEditingController();
   TextEditingController loginPasswordController = TextEditingController();
 
+  void navigate(){
+      if (userLoggedIn) {
+        context.pushReplacementNamed(AppRoute.dashboardTabs.name);
+      }
+  }
+
+  /// Handles login submission
+  Future<void> submit() async {
+    if (withPhoneKey.currentState!.validate()) {
+      final success = await ref.watch(loginControllerProvider.notifier).login(
+            LoginRequest(
+              mobileNumber: loginPhoneNumberController.text.toString(),
+              password: loginPasswordController.text.toString(),),);
+      if (success) {
+        if (mounted) {
+          setState(() {
+            userLoggedIn = true;
+          });
+        }
+      }
+    }
+    navigate();
+  }
+  @override
+  void dispose() {
+    loginPhoneNumberController.dispose();
+    loginPasswordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-
-    final loginController =
-        ref.read(loginControllerProvider);
-    final loginControllerNotifier =
-       ref.watch(loginControllerProvider.notifier);
+    final loginController = ref.watch(loginControllerProvider);
+    final loginControllerNotifier = ref.watch(loginControllerProvider.notifier);
 
     return SingleChildScrollView(
       child: Form(
@@ -44,7 +73,7 @@ class _LoginWithPhoneState extends ConsumerState<LoginWithPhone> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             gapH8,
-            CustomTextField(
+            CustomTextFormField(
               title: 'Phone Number',
               hint: '0XX XXXX XXXX',
               inputType: TextInputType.phone,
@@ -56,7 +85,7 @@ class _LoginWithPhoneState extends ConsumerState<LoginWithPhone> {
               },
             ),
             gapH12,
-            CustomTextField(
+            CustomTextFormField(
               title: 'Password',
               controller: loginPasswordController,
               hint: '*******',
@@ -158,25 +187,19 @@ class _LoginWithPhoneState extends ConsumerState<LoginWithPhone> {
             gapH48,
             PrimaryButton(
               buttonColor: AppColors.primary,
-              isLoading : loginController.submitValue.isLoading,
+              isLoading: loginController.submitValue.isLoading,
               text: 'SIGN IN',
-              onPressed: () {
-                if (withPhoneKey.currentState!.validate()) {
-                  loginControllerNotifier.login(
-                    LoginRequest(
-                      mobileNumber: loginPhoneNumberController.text.toString(),
-                      password: loginPasswordController.text.toString(),
-                    ),
-                  );
-                }
-                if(loginController.value!=null){
-                  context.pushReplacementNamed(AppRoute.dashboardHome.name);
-                }
-              },
+              onPressed:loginController.submitValue.isLoading ? null : submit,
+              //     () {
+              //   submit();
+              //   if (userLoggedIn) {
+              //     context.pushReplacementNamed(AppRoute.dashboardTabs.name);
+              //   }
+              // }
+             // ,
             ),
             gapH8,
             Container(
-
               child: RichText(
                 // Controls visual overflow
                 overflow: TextOverflow.ellipsis,

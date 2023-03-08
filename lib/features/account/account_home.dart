@@ -33,7 +33,7 @@ class _AccountHomeState extends State<AccountHome> {
                   CupertinoIcons.back,
                   color: AppColors.primary,
                   size: 40,
-                )),
+                ),),
           ),
           body: SafeArea(
               child: Listener(
@@ -55,7 +55,7 @@ class _AccountHomeState extends State<AccountHome> {
                           width: 88.2,
                           height: 90,
                           child: SvgPicture.asset(AppAssets.avatar),
-                        )
+                        ),
                       ],
                     ), ),
                const  SliverToBoxAdapter(child: gapH16),
@@ -76,11 +76,11 @@ class _AccountHomeState extends State<AccountHome> {
                               labelStyle: const TextStyle(
                                   color: AppColors.white,
                                   fontSize: 12.0,
-                                  fontWeight: FontWeight.bold),
+                                  fontWeight: FontWeight.bold,),
                               unselectedLabelStyle:const TextStyle(
                                   fontSize: 12.0,
                                   color: AppColors.white,
-                                  fontWeight: FontWeight.bold),
+                                  fontWeight: FontWeight.bold,),
                               labelPadding: const EdgeInsets.all(0),
                               unselectedLabelColor: AppColors.dark_blue,
                               indicatorSize: TabBarIndicatorSize.label,
@@ -121,8 +121,8 @@ class _AccountHomeState extends State<AccountHome> {
                       ),
                     ),
 
-                  ],)),
-          ))),
+                  ],),),
+          ),),),
     );
   }
 }

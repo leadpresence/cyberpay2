@@ -1,3 +1,5 @@
+import '../models/local/local_user.dart';
+
 abstract class  StorageService {
   /// Initializes service
   Future<void> init();
@@ -22,4 +24,9 @@ abstract class  StorageService {
 
   /// Terminates service
   Future<void> close();
+  /// Stores User to local Storage
+  Future<void> saveLocalUser(LocalUser userModel);
+  /// Get local store user model
+  Future<LocalUser?> getSavedLocalUser();
+
 }

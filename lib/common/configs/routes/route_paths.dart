@@ -2,6 +2,7 @@ import 'package:cyberpay_mobile_2/features/account/account_home.dart';
 import 'package:cyberpay_mobile_2/features/airtime_data/data_purchase_datails.dart';
 import 'package:cyberpay_mobile_2/features/dashboard/bvn_submission.dart';
 import 'package:cyberpay_mobile_2/features/dashboard/dashboard_home.dart';
+import 'package:cyberpay_mobile_2/features/dashboard/dashboard_tabs.dart';
 import 'package:cyberpay_mobile_2/features/login/login_view.dart';
 import 'package:cyberpay_mobile_2/features/pay_bills/pay_utility_bills.dart';
 import 'package:cyberpay_mobile_2/features/send_recieve_money/receive/request_money.dart';
@@ -48,6 +49,9 @@ enum AppRoute {
 
   ///  dashboardHome
   dashboardHome,
+
+  ///  dashboardTabs
+  dashboardTabs,
 
   /// RegisterView,
   registerView,
@@ -191,6 +195,11 @@ final goRouterProvider = Provider<GoRouter>((ref) {
           path: 'dashboardHome',
           name: AppRoute.dashboardHome.name,
           builder: (context, state) => const DashboardHome(),
+        ),
+        GoRoute(
+          path: 'dashboardTabs',
+          name: AppRoute.dashboardTabs.name,
+          builder: (context, state) => const DashboardTabs(),
         ),
         GoRoute(
           path: 'faceVerificationView',
